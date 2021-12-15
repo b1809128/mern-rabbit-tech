@@ -1,0 +1,634 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "attribute": {
+                "name": "IPhone 12 ProMax 512GB",
+                "image": "images/products/product_1.jpg",
+                "price": "35.550.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 512,
+                "status": 10
+            },
+            "details": {
+                "description": "This is the best performance mobile phone in the world.",
+                "specifications": {
+                    "screen": "OLED Resolution: 1284 x 2778 Pixels, 3 cameras 12 MP, 12 MP Wide screen: 6.7",
+                    "ROM": "512GB",
+                    "RAM": "6GB",
+                    "Network Support": "Phone",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3687mAh"
+                }
+            }
+        },
+        {
+            "id": 2,
+            "attribute": {
+                "name": "IPhone 12 ProMax 256GB",
+                "image": "images/products/product_2.jpg",
+                "price": "31.850.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 3,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_3.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 4,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_4.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 5,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_5.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 6,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_6.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 7,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_7.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 8,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_8.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 9,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_9.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 10,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_10.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 11,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_11.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 12,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_12.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 13,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_13.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 14,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_14.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 15,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_15.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        },
+        {
+            "id": 16,
+            "attribute": {
+                "name": "IPhone 12 Mini 256GB",
+                "image": "images/products/product_16.jpg",
+                "price": "27.750.000",
+                "brand": "Apple",
+                "type": "Phone",
+                "color": [
+                    "white",
+                    "black",
+                    "red",
+                    "gray"
+                ],
+                "memory": 256,
+                "status": 6
+            },
+            "details": {
+                "description": "This is the 6.7' screen 60Hz in the world.",
+                "specifications": {
+                    "screen": "Full HD 1280x720px",
+                    "ROM": "256GB",
+                    "RAM": "6GB",
+                    "Network Support": "5G",
+                    "SIM": "1 Nano SIM & 1 eSIM",
+                    "weight": "228g",
+                    "battery": "3400mAh"
+                }
+            }
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "authentication:": {
+                "username": "quochuy",
+                "password": "quochuy123",
+                "email": "quochuy123@gmail.com",
+                "image": "./images/user/id/id.jpg"
+            },
+            "other": {
+                "order": {
+                    "address": "Can Tho, Viet Nam",
+                    "phone_number": "12345653"
+                },
+                "history": {
+                    "donhang": [],
+                    "timeToOrder": "1/1/2021",
+                    "timeToGet": "2/1/2021"
+                }
+            }
+        },
+        {
+            "id": 2,
+            "authentication:": {
+                "username": "thaoanh",
+                "password": "thaoanh123",
+                "email": "thaoanh123@gmail.com",
+                "image": "./images/user/id/{$id}.jpg"
+            },
+            "other": {
+                "order": {
+                    "address": "Kien Giang, Viet Nam",
+                    "phone_number": "12345653"
+                },
+                "history": {
+                    "donhang": [],
+                    "timeToOrder": "1/1/2021",
+                    "timeToGet": "2/1/2021"
+                }
+            }
+        }
+    ],
+    "data": [
+        {
+            "element": "\n            <p>Màn hình 6.1\",  Chip Apple A14 Bionic</p>\n            <p>RAM 4 GB,  ROM 64 GB</p>\n            <p>Camera sau: 2 camera 12 MP</p>\n            <p>Camera trước: 12 MP</p>\n            <p>Pin 2815 mAh,  Sạc 20 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 6.7\",  Chip Apple A15 Bionic</p>\n            <p>RAM 6 GB,  ROM 128 GB</p>\n            <p>Camera sau: 3 camera 12 MP</p>\n            <p>Camera trước: 12 MP</p>\n            <p> Sạc 20 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 6.1\",  Chip Apple A15 Bionic</p>\n            <p>RAM 6 GB,  ROM 128 GB</p>\n            <p>Camera sau: 3 camera 12 MP</p>\n            <p>Camera trước: 12 MP</p>\n            <p> Sạc 20 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 6.7\",  Chip Apple A14 Bionic</p>\n            <p>RAM 6 GB,  ROM 128 GB</p>\n            <p>Camera sau: 3 camera 12 MP</p>\n            <p>Camera trước: 12 MP</p>\n            <p>Pin 3687 mAh,  Sạc 20 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 6.1\",  Chip Apple A14 Bionic</p>\n            <p>RAM 6 GB,  ROM 128 GB</p>\n            <p>Camera sau: 3 camera 12 MP</p>\n            <p>Camera trước: 12 MP</p>\n            <p>Pin 2815 mAh,  Sạc 20 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 6.1\",  Chip Apple A15 Bionic</p>\n            <p>RAM 4 GB,  ROM 128 GB</p>\n            <p>Camera sau: 2 camera 12 MP</p>\n            <p>Camera trước: 12 MP</p>\n            <p> Sạc 20 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 5.4\",  Chip Apple A15 Bionic</p>\n            <p>RAM 4 GB,  ROM 128 GB</p>\n            <p>Camera sau: 2 camera 12 MP</p>\n            <p>Camera trước: 12 MP</p>\n            <p> Sạc 20 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 5.4\",  Chip Apple A14 Bionic</p>\n            <p>RAM 4 GB,  ROM 64 GB</p>\n            <p>Camera sau: 2 camera 12 MP</p>\n            <p>Camera trước: 12 MP</p>\n            <p>Pin 2227 mAh,  Sạc 20 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 6.1\",  Chip Apple A13 Bionic</p>\n            <p>RAM 4 GB,  ROM 64 GB</p>\n            <p>Camera sau: 2 camera 12 MP</p>\n            <p>Camera trước: 12 MP</p>\n            <p>Pin 3110 mAh,  Sạc 18 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 6.1\",  Chip Apple A12 Bionic</p>\n            <p>RAM 3 GB,  ROM 64 GB</p>\n            <p>Camera sau: 12 MP</p>\n            <p>Camera trước: 7 MP</p>\n            <p>Pin 2942 mAh,  Sạc 15 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 4.7\",  Chip Apple A13 Bionic</p>\n            <p>RAM 3 GB,  ROM 128 GB</p>\n            <p>Camera sau: 12 MP</p>\n            <p>Camera trước: 7 MP</p>\n            <p>Pin 1821 mAh,  Sạc 18 W</p>\n    "
+        },
+        {
+            "element": "\n            <p>Màn hình 4.7\",  Chip Apple A13 Bionic</p>\n            <p>RAM 3 GB,  ROM 64 GB</p>\n            <p>Camera sau: 12 MP</p>\n            <p>Camera trước: 7 MP</p>\n            <p>Pin 1821 mAh,  Sạc 18 W</p>\n    "
+        }
+    ],
+    "v2": [
+        {
+            "price": [
+                "26,790,000 ₫",
+                "21,490,000 ₫",
+                "18,690,000 ₫",
+                "29,490,000 ₫",
+                "24,190,000 ₫",
+                "21,590,000 ₫",
+                "35,190,000 ₫",
+                "40,190,000 ₫",
+                "29,790,000 ₫",
+                "26,990,000 ₫",
+                "37,790,000 ₫",
+                "42,990,000 ₫",
+                "32,490,000 ₫",
+                "29,990,000 ₫",
+                "28,490,000 ₫",
+                "31,390,000 ₫",
+                "36,690,000 ₫",
+                "25,890,000 ₫",
+                "30,990,000 ₫",
+                "27,890,000 ₫"
+            ],
+            "name": [
+                "Apple iPhone 13 Mini - 512GB - Chính hãng VN/A",
+                "Apple iPhone 13 Mini - 256GB - Chính hãng VN/A",
+                "Apple iPhone 13 Mini - 128GB - Chính hãng VN/A",
+                "Apple iPhone 13 - 512GB - Chính hãng VN/A",
+                "Apple iPhone 13 - 256GB - Chính hãng VN/A ",
+                "Apple iPhone 13 - 128GB - Chính hãng VN/A",
+                "Apple iPhone 13 Pro - 512GB - Chính hãng VN/A",
+                "Apple iPhone 13 Pro - 1TB - Chính hãng VN/A",
+                "Apple iPhone 13 Pro - 256GB - Chính hãng VN/A",
+                "Apple iPhone 13 Pro - 128GB - Chính hãng VN/A",
+                "Apple iPhone 13 Pro Max - 512GB - Chính hãng VN/A",
+                "Apple iPhone 13 Pro Max - 1TB - Chính hãng VN/A",
+                "Apple iPhone 13 Pro Max - 256GB - Chính hãng VN/A",
+                "Apple iPhone 13 Pro Max - 128GB - Chính hãng VN/A",
+                "Apple iPhone 12 Pro Max - 128GB - Chính hãng VN/A",
+                "Apple iPhone 12 Pro Max - 256GB - Chính hãng VN/A",
+                "Apple iPhone 12 Pro Max - 512GB - Chính hãng VN/A",
+                "Apple iPhone 12 Pro - 128GB - Chính hãng VN/A",
+                "Apple iPhone 12 Pro - 512GB - Chính hãng VN/A",
+                "Apple iPhone 12 Pro - 256GB - Chính hãng VN/A"
+            ],
+            "image": [
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-13.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-13.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-13.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-11.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-11.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-11.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-16.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-16.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-16.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-16.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/03/19/iphoone-12.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/03/19/iphoone-12.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/03/19/iphoone-12.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/02/25/iphone-12-pro.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/02/25/iphone-12-pro.png",
+                "https://hoanghamobile.com/i/productlist/ts/Uploads/2021/02/25/iphone-12-pro.png"
+            ]
+        }
+    ]
+}
