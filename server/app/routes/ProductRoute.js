@@ -7,5 +7,5 @@ router.get("/group/:id", product.group);
 router.get("/sort/price/high", product.sortHigh);
 router.get("/sort/price/low", product.sortLow);
 router.get("/bestsale", product.bestSale);
-router.get("/search",product.search);
+router.post("/add", product.add);
 module.exports = router;

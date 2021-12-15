@@ -16,7 +16,7 @@ exports.group = (req, res) => {
 };
 
 exports.sortHigh = (req, res) => {
-  Product.getSortHigh((result) => {    
+  Product.getSortHigh((result) => {
     res.send(result);
   });
 };
@@ -33,8 +33,19 @@ exports.bestSale = (req, res) => {
   });
 };
 
-exports.search = (req, res) => {
-    Product.getSearch((result) => {
-      res.send(result);
-    });
-  };
+exports.add = (req, res) => {
+  data = [
+    req.body.MSHH,
+    req.body.TenHH,
+    req.body.Gia_Cu,
+    req.body.Gia,
+    req.body.SoLuongHang,
+    req.body.Mota,
+    req.body.HinhAnh,
+    req.body.MaLoaiHang,
+  ];
+  Product.addProduct(data);
+  //SetHeader fix err_http
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Add Product Successful");
+};
