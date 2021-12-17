@@ -8,4 +8,6 @@ router.get("/sort/price/high", product.sortHigh);
 router.get("/sort/price/low", product.sortLow);
 router.get("/bestsale", product.bestSale);
 router.post("/add", product.add);
+router.put("/update/:id",product.updateById);
+router.delete("/delete/:id", product.deleteById);
 module.exports = router;

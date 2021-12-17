@@ -49,3 +49,27 @@ exports.add = (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Add Product Successful");
 };
+
+exports.updateById = (req, res) => {
+  data = [
+    req.body.MSHH,
+    req.body.TenHH,
+    req.body.Gia_Cu,
+    req.body.Gia,
+    req.body.SoLuongHang,
+    req.body.Mota,
+    req.body.HinhAnh,
+    req.body.MaLoaiHang,
+  ];
+  Product.updateProduct(req.params.id,data);
+  //SetHeader fix err_http
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Update Product Successful");
+};
+
+
+exports.deleteById = (req, res) => {
+  Product.deleteProduct(req.params.id)
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Delete Product Successful");
+}

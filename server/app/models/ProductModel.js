@@ -58,13 +58,27 @@ Product.getBestSale = (result) => {
   });
 };
 
-Product.addProduct = async (data) => {
+Product.addProduct = (data) => {
   const sql =
     "INSERT INTO hanghoa(MSHH,TenHH,Gia_Cu,Gia,SoLuongHang,Mota,HinhAnh,MaLoaiHang) values (?,?,?,?,?,?,?,?)";
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
+
+Product.updateProduct = (id, data) => {
+  const sql = `update hanghoa set MSHH = ?,TenHH = ?,Gia_Cu = ?,Gia = ?,SoLuongHang = ?,Mota = ?,HinhAnh = ?,MaLoaiHang = ? where MSHH='${id}'`;
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
+Product.deleteProduct = (id) => {
+  const sql = `delete from hanghoa where MSHH = '${id}'`
+  database.query(sql, (err, db) => {
+    if (err) throw err;
+  });
+}
 
 /**
  {

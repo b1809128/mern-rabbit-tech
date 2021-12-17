@@ -26,6 +26,22 @@ Customer.getById = (id, result) => {
   });
 };
 
+Customer.getAllOrderCustomerById = (id, result) => {
+  const sql = `SELECT * FROM dathang where MSKH = '${id}'`;
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
+Customer.getDetailsOrderById = (id, result) => {
+  const sql = `SELECT * FROM chitietdathang where SoDonDH = '${id}'`;
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
 Customer.addCustomer = (data) => {
   const sql =
     "INSERT INTO khachhang(MSKH,HoTenKH,TenCongTy,SoDienThoai,Email,User,Password) values (?,?,?,?,?,?,?)";
@@ -34,6 +50,19 @@ Customer.addCustomer = (data) => {
   });
 };
 
+Customer.updateCustomerById = (id, data) => {
+  const sql = `update khachhang set MSKH=?,HoTenKH=?,TenCongTy=?,SoDienThoai=?,Email=?,User=?,Password=? where MSKH='${id}'`;
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
+Customer.deleteCustomerById = (id) => {
+  const sql1 = `delete from khachhang where MSKH='${id}'`;
+  database.query(sql1, (err, db) => {
+    if (err) throw err;
+  });
+};
 /**
  {
     "MSKH":"KH007",
