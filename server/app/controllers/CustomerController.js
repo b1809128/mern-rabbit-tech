@@ -1,4 +1,6 @@
 const Customer = require("../models/CustomerModel");
+
+//READ
 exports.getList = (req, res) => {
   Customer.getAll((result) => res.send(result));
 };
@@ -21,6 +23,7 @@ exports.orderById = (req, res) => {
   });
 };
 
+//CREATE
 exports.add = (req, res) => {
   data = [
     req.body.MSKH,
@@ -36,6 +39,7 @@ exports.add = (req, res) => {
   res.status(200).json("Add User Successful");
 };
 
+//UPDATE
 exports.updateById = (req, res) => {
   data = [
     req.body.MSKH,
@@ -46,12 +50,12 @@ exports.updateById = (req, res) => {
     req.body.User,
     req.body.Password,
   ];
-  Customer.updateCustomerById(req.params.id,data);
+  Customer.updateCustomerById(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update User Successful");
 };
 
-
+//DELETE
 exports.deleteById = (req, res) => {
   Customer.deleteCustomerById(req.params.id);
   res.setHeader("Content-Type", "application/json");

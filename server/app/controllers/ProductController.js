@@ -1,4 +1,6 @@
 const Product = require("../models/ProductModel");
+
+//READ
 exports.getAllProducts = (req, res) => {
   Product.getAll((result) => res.send(result));
 };
@@ -33,6 +35,7 @@ exports.bestSale = (req, res) => {
   });
 };
 
+//CREATE
 exports.add = (req, res) => {
   data = [
     req.body.MSHH,
@@ -50,6 +53,7 @@ exports.add = (req, res) => {
   res.status(200).json("Add Product Successful");
 };
 
+//UPDATE
 exports.updateById = (req, res) => {
   data = [
     req.body.MSHH,
@@ -61,15 +65,15 @@ exports.updateById = (req, res) => {
     req.body.HinhAnh,
     req.body.MaLoaiHang,
   ];
-  Product.updateProduct(req.params.id,data);
+  Product.updateProduct(req.params.id, data);
   //SetHeader fix err_http
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Product Successful");
 };
 
-
+//DELETE
 exports.deleteById = (req, res) => {
-  Product.deleteProduct(req.params.id)
+  Product.deleteProduct(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete Product Successful");
-}
+};

@@ -1,7 +1,8 @@
 const Customer = require("../models/CustomerModel");
 const Product = require("../models/ProductModel");
-const Staff = require("../models/StaffModel")
+const Staff = require("../models/StaffModel");
 const Order = require("../models/OrderModel");
+//READ
 exports.getAPI = (req, res) => {
   Customer.getAll((result) => res.send(result));
   res.setHeader("Content-Type", "application/json");
@@ -14,7 +15,7 @@ exports.getAllProduct = (req, res) => {
 };
 
 exports.getAllUser = (req, res) => {
-  Customer.getAll( (result) => {
+  Customer.getAll((result) => {
     res.send(result);
   });
 };
@@ -35,6 +36,7 @@ exports.getOrderDetails = (req, res) => {
   });
 };
 
+//CREATE
 exports.addProduct = (req, res) => {
   data = [
     req.body.MSHH,
@@ -65,6 +67,7 @@ exports.addStaff = (req, res) => {
   res.status(200).json("Add User Successful");
 };
 
+//UPDATE
 exports.updateProductById = (req, res) => {
   data = [
     req.body.MSKH,
@@ -124,6 +127,7 @@ exports.updateOrderById = (req, res) => {
   res.status(200).json("Update User Successful");
 };
 
+//DELETE
 exports.deleteProductById = (req, res) => {
   Customer.deleteCustomerById(req.params.id);
   res.setHeader("Content-Type", "application/json");
