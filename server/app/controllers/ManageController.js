@@ -31,7 +31,7 @@ exports.getAllOrder = (req, res) => {
 };
 
 exports.getOrderDetails = (req, res) => {
-  Customer.getAllOrderCustomerById(req.params.id, (result) => {
+  Order.getOrderCustomerById(req.params.id, (result) => {
     res.send(result);
   });
 };
@@ -41,28 +41,30 @@ exports.addProduct = (req, res) => {
   data = [
     req.body.MSHH,
     req.body.TenHH,
-    req.body.TenCongTy,
-    req.body.SoDienThoai,
-    req.body.Email,
-    req.body.User,
-    req.body.Password,
+    req.body.Gia_Cu,
+    req.body.Gia,
+    req.body.SoLuongHang,
+    req.body.Mota,
+    req.body.HinhAnh,
+    req.body.MaLoaiHang,
   ];
-  Customer.addCustomer(data);
+  Product.addProduct(data);
+  //SetHeader fix err_http
   res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Add User Successful");
+  res.status(200).json("Add Product Successful");
 };
 
 exports.addStaff = (req, res) => {
   data = [
-    req.body.MSKH,
-    req.body.HoTenKH,
-    req.body.TenCongTy,
+    req.body.MSNV,
+    req.body.HoTenNV,
+    req.body.ChucVu,
+    req.body.DiaChi,
     req.body.SoDienThoai,
-    req.body.Email,
     req.body.User,
     req.body.Password,
   ];
-  Customer.addCustomer(data);
+  Staff.addStaff(data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Add User Successful");
 };
@@ -70,17 +72,19 @@ exports.addStaff = (req, res) => {
 //UPDATE
 exports.updateProductById = (req, res) => {
   data = [
-    req.body.MSKH,
-    req.body.HoTenKH,
-    req.body.TenCongTy,
-    req.body.SoDienThoai,
-    req.body.Email,
-    req.body.User,
-    req.body.Password,
+    req.body.MSHH,
+    req.body.TenHH,
+    req.body.Gia_Cu,
+    req.body.Gia,
+    req.body.SoLuongHang,
+    req.body.Mota,
+    req.body.HinhAnh,
+    req.body.MaLoaiHang,
   ];
-  Customer.updateUserById(req.params.id, data);
+  Product.updateProductById(req.params.id, data);
+  //SetHeader fix err_http
   res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update User Successful");
+  res.status(200).json("Update Product Successful");
 };
 
 exports.updateUserById = (req, res) => {
@@ -93,43 +97,37 @@ exports.updateUserById = (req, res) => {
     req.body.User,
     req.body.Password,
   ];
-  Customer.updateOrderById(req.params.id, data);
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update User Successful");
-};
-exports.updateStaffById = (req, res) => {
-  data = [
-    req.body.MSKH,
-    req.body.HoTenKH,
-    req.body.TenCongTy,
-    req.body.SoDienThoai,
-    req.body.Email,
-    req.body.User,
-    req.body.Password,
-  ];
   Customer.updateCustomerById(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update User Successful");
 };
 
-exports.updateOrderById = (req, res) => {
+exports.updateStaffById = (req, res) => {
   data = [
-    req.body.MSKH,
-    req.body.HoTenKH,
-    req.body.TenCongTy,
+    req.body.MSNV,
+    req.body.HoTenNV,
+    req.body.ChucVu,
+    req.body.DiaChi,
     req.body.SoDienThoai,
-    req.body.Email,
     req.body.User,
     req.body.Password,
   ];
-  Customer.updateCustomerById(req.params.id, data);
+  Staff.updateStaffById(req.params.id, data);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Update User Successful");
+};
+
+//None Complete [add more column check already]
+exports.updateOrderById = (req, res) => {
+  data = [req.body.check];
+  Order.updateOrderById(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update User Successful");
 };
 
 //DELETE
 exports.deleteProductById = (req, res) => {
-  Customer.deleteCustomerById(req.params.id);
+  Product.deleteProductById(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");
 };
@@ -141,13 +139,13 @@ exports.deleteUserById = (req, res) => {
 };
 
 exports.deleteStaffById = (req, res) => {
-  Customer.deleteCustomerById(req.params.id);
+  Staff.deleteStaffById(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");
 };
 
 exports.deleteOrderById = (req, res) => {
-  Customer.deleteCustomerById(req.params.id);
+  Order.deleteOrderById(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");
 };

@@ -58,8 +58,8 @@ Customer.updateCustomerById = (id, data) => {
 };
 
 Customer.deleteCustomerById = (id) => {
-  const sql1 = `delete from khachhang where MSKH='${id}'`;
-  database.query(sql1, (err, db) => {
+  const sql = `delete from khachhang where MSKH='${id}'`;
+  database.query(sql, (err, db) => {
     if (err) throw err;
   });
 };

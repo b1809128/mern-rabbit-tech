@@ -66,19 +66,19 @@ Product.addProduct = (data) => {
   });
 };
 
-Product.updateProduct = (id, data) => {
+Product.updateProductById = (id, data) => {
   const sql = `update hanghoa set MSHH = ?,TenHH = ?,Gia_Cu = ?,Gia = ?,SoLuongHang = ?,Mota = ?,HinhAnh = ?,MaLoaiHang = ? where MSHH='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
-Product.deleteProduct = (id) => {
-  const sql = `delete from hanghoa where MSHH = '${id}'`
+Product.deleteProductById = (id) => {
+  const sql = `delete from hanghoa where MSHH = '${id}'`;
   database.query(sql, (err, db) => {
     if (err) throw err;
   });
-}
+};
 
 /**
  {

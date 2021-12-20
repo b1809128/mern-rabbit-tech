@@ -1,30 +1,26 @@
 const Customer = require("../models/CustomerModel");
 
 //READ
-exports.getList = (req, res) => {
-  Customer.getAll((result) => res.send(result));
-};
-
 exports.details = (req, res) => {
   Customer.getById(req.params.id, (result) => {
     res.send(result);
   });
 };
 
-exports.orderCustomerId = (req, res) => {
+exports.getAllOrderCustomerById = (req, res) => {
   Customer.getAllOrderCustomerById(req.params.id, (result) => {
     res.send(result);
   });
 };
 
-exports.orderById = (req, res) => {
+exports.getDetailsOrderById = (req, res) => {
   Customer.getDetailsOrderById(req.params.id, (result) => {
     res.send(result);
   });
 };
 
 //CREATE
-exports.add = (req, res) => {
+exports.addCustomer = (req, res) => {
   data = [
     req.body.MSKH,
     req.body.HoTenKH,
@@ -40,7 +36,7 @@ exports.add = (req, res) => {
 };
 
 //UPDATE
-exports.updateById = (req, res) => {
+exports.updateCustomerById = (req, res) => {
   data = [
     req.body.MSKH,
     req.body.HoTenKH,
@@ -56,7 +52,7 @@ exports.updateById = (req, res) => {
 };
 
 //DELETE
-exports.deleteById = (req, res) => {
+exports.deleteCustomerById = (req, res) => {
   Customer.deleteCustomerById(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");
