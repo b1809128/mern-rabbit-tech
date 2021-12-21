@@ -102,42 +102,6 @@ exports.updateUserById = (req, res) => {
   res.status(200).json("Update User Successful");
 };
 
-exports.updateProductNotAll = (req, res) => {
-  data = [
-    req.body
-  ];
-  Product.updateProductNotAll(req.params.id, data);
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update Product Successful");
-};
-
-exports.updateUserNotAll = (req, res) => {
-  data = [
-    req.body
-  ];
-  Customer.updateCustomerNotAll(req.params.id, data);
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update User Successful");
-};
-
-exports.updateStaffNotAll = (req, res) => {
-  data = [
-    req.body
-  ];
-  Staff.updateStaffNotAll(req.params.id, data);
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update Staff Successful");
-};
-
-exports.updateOrderNotAll = (req, res) => {
-  data = [
-    req.body
-  ];
-  Order.updateOrderNotAll(req.params.id, data);
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update User Successful");
-};
-
 exports.updateStaffById = (req, res) => {
   data = [
     req.body.MSNV,
@@ -157,6 +121,34 @@ exports.updateStaffById = (req, res) => {
 exports.updateOrderById = (req, res) => {
   data = [req.body.check];
   Order.updateOrderById(req.params.id, data);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Update User Successful");
+};
+
+exports.updateProductNotAll = (req, res) => {
+  data = [req.body];
+  Product.updateProductNotAll(req.params.id, data);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Update Product Successful");
+};
+
+exports.updateUserNotAll = (req, res) => {
+  data = [req.body];
+  Customer.updateCustomerNotAll(req.params.id, data);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Update User Successful");
+};
+
+exports.updateStaffNotAll = (req, res) => {
+  data = [req.body];
+  Staff.updateStaffNotAll(req.params.id, data);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Update Staff Successful");
+};
+
+exports.updateOrderNotAll = (req, res) => {
+  data = [req.body];
+  Order.updateOrderNotAll(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update User Successful");
 };
