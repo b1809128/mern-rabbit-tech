@@ -57,6 +57,13 @@ Customer.updateCustomerById = (id, data) => {
   });
 };
 
+Customer.updateCustomerNotAll = (id, data) => {
+  const sql = `update khachhang set ? where MSKH='${id}'`;
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
 Customer.deleteCustomerById = (id) => {
   const sql = `delete from khachhang where MSKH='${id}'`;
   database.query(sql, (err, db) => {

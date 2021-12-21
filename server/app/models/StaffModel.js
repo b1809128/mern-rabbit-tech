@@ -33,6 +33,13 @@ Staff.updateStaffById = (id, data) => {
   });
 };
 
+Staff.updateStaffNotAll = (id, data) => {
+  const sql = `update nhanvien set ? where MSNV='${id}'`;
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
 Staff.deleteStaffById = (id) => {
   const sql = `delete from nhanvien where MSNV='${id}'`;
   database.query(sql, (err, db) => {

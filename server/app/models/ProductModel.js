@@ -73,6 +73,13 @@ Product.updateProductById = (id, data) => {
   });
 };
 
+Product.updateProductNotAll = (id, data) => {
+  const sql = `update hanghoa set ? where MSHH='${id}'`;
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
 Product.deleteProductById = (id) => {
   const sql = `delete from hanghoa where MSHH = '${id}'`;
   database.query(sql, (err, db) => {

@@ -12,10 +12,15 @@ router.get("/order/details/:id", manage.getOrderDetails);
 router.post("/product/add", manage.addProduct);
 router.post("/staff/add", manage.addStaff);
 //UPDATE
-router.put("/product/update/:id",manage.updateProductById);
-router.put("/user/update/:id",manage.updateUserById);
-router.put("/staff/update/:id",manage.updateStaffById);
-router.put("/order/update/:id",manage.updateOrderById);
+router.put("/product/update/:id", manage.updateProductById);
+router.put("/user/update/:id", manage.updateUserById);
+router.put("/staff/update/:id", manage.updateStaffById);
+router.put("/order/update/:id", manage.updateOrderById);
+router.patch("/user/updateonly/:id", manage.updateUserNotAll);
+router.patch("/product/updateonly/:id", manage.updateProductNotAll);
+router.patch("/staff/updateonly/:id", manage.updateStaffNotAll);
+router.patch("/order/updateonly/:id", manage.updateOrderNotAll);
+
 //DELETE
 router.delete("/product/delete/:id", manage.deleteProductById);
 router.delete("/user/delete/:id", manage.deleteUserById);

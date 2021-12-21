@@ -24,6 +24,13 @@ Order.getOrderCustomerById = (id, result) => {
   });
 };
 
+Order.updateOrderNotAll = (id, data) => {
+  const sql = `update dathang set ? where SoDonDH='${id}'`;
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
 Order.deleteOrderById = (id) => {
   const sql = `delete from dathang where SoDonDH = '${id}'`;
   database.query(sql, (err, db) => {
