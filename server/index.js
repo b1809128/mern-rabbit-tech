@@ -4,8 +4,10 @@ const homeRouter = require("./app/routes/home");
 const productRouter = require("./app/routes/ProductRoute");
 const customerRouter = require("./app/routes/CustomerRoute");
 const manageRouter = require("./app/routes/ManageRoute")
+const cors = require('cors')
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const PORT = 5000;
