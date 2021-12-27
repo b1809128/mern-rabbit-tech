@@ -19,6 +19,14 @@ Product.getAll = (result) => {
   });
 };
 
+Product.getAllInfomation = (result) => {
+  const sql = "SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH";
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
 Product.getById = (id, result) => {
   const sql = `SELECT * FROM hanghoa where MSHH = '${id}'`;
   database.query(sql, (err, data) => {

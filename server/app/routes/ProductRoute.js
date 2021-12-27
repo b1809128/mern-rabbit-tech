@@ -3,6 +3,7 @@ const router = express.Router();
 const product = require("../controllers/ProductController");
 //READ
 router.get("/", product.getAllProducts);
+router.get("/all", product.getAllInfomation);
 router.get("/details/:id", product.details);
 router.get("/group/:id", product.group);
 router.get("/sort/price/high", product.sortHigh);
