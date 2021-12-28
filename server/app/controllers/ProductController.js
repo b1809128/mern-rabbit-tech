@@ -2,14 +2,9 @@ const Product = require("../models/ProductModel");
 
 //READ
 exports.getAllProducts = (req, res) => {
-  Product.getAll((result) => res.send(result));
+  Product.getAllProducts((result) => res.send(result));
 };
 
-exports.getAllInfomation = (req, res) => {
-  Product.getAllInfomation((result) => {
-    res.send(result);
-  });
-};
 
 exports.details = (req, res) => {
   Product.getById(req.params.id, (result) => {

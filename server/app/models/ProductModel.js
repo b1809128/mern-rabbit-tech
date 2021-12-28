@@ -11,21 +11,14 @@ const Product = (data) => {
   this.MaLoaiHang = data.MaLoaiHang;
 };
 
-Product.getAll = (result) => {
-  const sql = "SELECT * FROM hanghoa";
-  database.query(sql, (err, data) => {
-    if (err) throw err;
-    result(data);
-  });
-};
-
-Product.getAllInfomation = (result) => {
+Product.getAllProducts = (result) => {
   const sql = "SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH";
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
   });
 };
+
 
 Product.getById = (id, result) => {
   const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH AND a.MSHH = '${id}'`;
