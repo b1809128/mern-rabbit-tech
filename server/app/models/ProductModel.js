@@ -28,7 +28,8 @@ Product.getAllInfomation = (result) => {
 };
 
 Product.getById = (id, result) => {
-  const sql = `SELECT * FROM hanghoa where MSHH = '${id}'`;
+  const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH AND a.MSHH = '${id}'`;
+  // const sql = `SELECT * FROM hanghoa where MSHH = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
