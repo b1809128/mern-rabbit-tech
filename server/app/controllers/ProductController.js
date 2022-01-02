@@ -23,7 +23,9 @@ exports.details = (req, res) => {
 };
 
 exports.group = (req, res) => {
-  console.log(req.query);
+  Product.getByGroup(req.params.id, (result) => {
+    res.send(result);
+  });
 };
 
 exports.sortByPriceASC = (req, res) => {

@@ -30,7 +30,7 @@ Product.getById = (id, result) => {
 };
 
 Product.getByGroup = (id, result) => {
-  const sql = `SELECT * FROM hanghoa where MaLoaiHang = '${id}'`;
+  const sql = `SELECT * FROM hanghoa as a, hinhanh as b where a.MSHH = b.MSHH and MaLoaiHang = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
