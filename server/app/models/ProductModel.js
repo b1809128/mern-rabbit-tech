@@ -37,21 +37,38 @@ Product.getByGroup = (id, result) => {
   });
 };
 
-Product.getSortHigh = (result) => {
-  const sql = `SELECT * FROM hanghoa order by Gia desc`;
+Product.getSortByPriceASC = (result) => {
+  const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH order by b.Gia ASC`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
   });
 };
 
-Product.getSortLow = (result) => {
-  const sql = `SELECT * FROM hanghoa order by Gia asc`;
+Product.getSortByPriceDESC = (result) => {
+  const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH order by b.Gia DESC`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
   });
 };
+
+Product.getSortByNameASC = (result) => {
+  const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH order by b.TenHH ASC`;
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
+Product.getSortByNameDESC = (result) => {
+  const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH order by b.TenHH DESC`;
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
 Product.getBestSale = (result) => {
   const sql = `SELECT * FROM hanghoa where SoLuongHang <= 10`;
   database.query(sql, (err, data) => {

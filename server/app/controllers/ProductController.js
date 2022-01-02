@@ -2,9 +2,19 @@ const Product = require("../models/ProductModel");
 
 //READ
 exports.getAllProducts = (req, res) => {
-  Product.getAllProducts((result) => res.send(result));
+  //Su dung query parameters de loc du lieu
+  if (req.query.sortBy == "PRICE_ASC") {
+    Product.getSortByPriceASC((result) => res.send(result));
+  } else if (req.query.sortBy == "PRICE_DESC") {
+    Product.getSortByPriceDESC((result) => res.send(result));
+  } else if (req.query.sortBy == "NAME_ASC") {
+    Product.getSortByNameASC((result) => res.send(result));
+  } else if (req.query.sortBy == "NAME_DESC") {
+    Product.getSortByNameDESC((result) => res.send(result));
+  } else {
+    Product.getAllProducts((result) => res.send(result));
+  }
 };
-
 
 exports.details = (req, res) => {
   Product.getById(req.params.id, (result) => {
@@ -13,19 +23,29 @@ exports.details = (req, res) => {
 };
 
 exports.group = (req, res) => {
-  Product.getByGroup(req.params.id, (result) => {
+  console.log(req.query);
+};
+
+exports.sortByPriceASC = (req, res) => {
+  Product.getSortByPriceASC((result) => {
     res.send(result);
   });
 };
 
-exports.sortHigh = (req, res) => {
-  Product.getSortHigh((result) => {
+exports.sortByPriceDESC = (req, res) => {
+  Product.getSortByPriceDESC((result) => {
     res.send(result);
   });
 };
 
-exports.sortLow = (req, res) => {
-  Product.getSortLow((result) => {
+exports.sortByNameASC = (req, res) => {
+  Product.getSortByNameASC((result) => {
+    res.send(result);
+  });
+};
+
+exports.sortByNameDESC = (req, res) => {
+  Product.getSortByNameDESC((result) => {
     res.send(result);
   });
 };
