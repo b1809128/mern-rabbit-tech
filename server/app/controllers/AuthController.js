@@ -1,5 +1,5 @@
 const Auth = require("../models/AuthModel");
-
+const crypto = require("crypto");
 exports.loginAuth = (req, res) => {
   if (req.session.user) {
     res.send({ loggedIn: true, user: req.session.user });
@@ -9,22 +9,31 @@ exports.loginAuth = (req, res) => {
 };
 
 exports.logoutAuth = (req, res) => {
-  res.send({ loggedOut: true });
+  req.session.destroy(function (err) {
+    if (err) throw err;
+    res.send(
+      "You have been logged out of your session. Please login to contiune"
+    );
+  });
 };
 
 exports.setLoginAuth = (req, res) => {
-  const user = req.body.user;
-  const password = req.body.password;
+  var user = req.body.user;
+  var password = req.body.password;
+
   Auth.checkLoginAuth(user, (result) => {
     if (result.length > 0) {
-      if (password === result[0].password) {
-        req.session.user = result;
-        req.session.save();
-        res.send(result);
-        // console.log(result[0].password);
-        // console.log(req.session.user);
-      } else {
-        res.send("Wrong password.Please, try again !");
+      if (password) {
+        var hashPash = crypto
+          .createHash("md5")
+          .update(password)
+          .digest("hex");
+        // console.log([hashPash, result[0].password]);
+        if (hashPash === result[0].password) {
+          res.send({ loggedIn: true, result: result });
+        } else {
+          res.send("Wrong password.Please, try again !");
+        }
       }
     } else {
       res.send("User doesn't exist !");
@@ -34,9 +43,11 @@ exports.setLoginAuth = (req, res) => {
 };
 
 exports.setRegisterAuth = (req, res) => {
-  data = [req.body.user, req.body.password];
+  if (req.body.password) {
+    var hashPash = crypto.createHash("md5").update(req.body.password).digest("hex");
+  }
+  data = [req.body.user, hashPash];
   Auth.createUser(data);
-  // console.log(data)
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Add User Successful");
 };
