@@ -9,12 +9,7 @@ exports.loginAuth = (req, res) => {
 };
 
 exports.logoutAuth = (req, res) => {
-  req.session.destroy(function (err) {
-    if (err) throw err;
-    res.send(
-      "You have been logged out of your session. Please login to contiune"
-    );
-  });
+  res.send("");
 };
 
 exports.setLoginAuth = (req, res) => {
@@ -24,22 +19,17 @@ exports.setLoginAuth = (req, res) => {
   Auth.checkLoginAuth(user, (result) => {
     if (result.length > 0) {
       if (password) {
-        var hashPash = crypto
-          .createHash("md5")
-          .update(password)
-          .digest("hex");
-        // console.log([hashPash, result[0].password]);
-        if (hashPash === result[0].password) {
+        // console.log([password, result[0].password]);
+        if (password === result[0].password) {
           res.send({ loggedIn: true, result: result });
         } else {
-          res.send("Wrong password.Please, try again !");
+          res.send({wrongPassword:"Wrong password.Please, try again !"});
         }
       }
     } else {
-      res.send("User doesn't exist !");
+      res.send({wrongUser:"User doesn't exist !"});
     }
   });
-  // console.log([user, password]);
 };
 
 exports.setRegisterAuth = (req, res) => {
