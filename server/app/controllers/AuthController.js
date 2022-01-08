@@ -9,7 +9,7 @@ exports.loginAuth = (req, res) => {
 };
 
 exports.logoutAuth = (req, res) => {
-  res.send("");
+  res.send(true);
 };
 
 exports.setLoginAuth = (req, res) => {
