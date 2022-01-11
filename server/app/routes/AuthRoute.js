@@ -7,5 +7,6 @@ router.get('/logout',auth.logoutAuth);
 //POST
 router.post('/login',auth.setLoginAuth);
 router.post('/register',auth.setRegisterAuth);
+router.post('/testJWT',auth.testLoginAuth);
 
 module.exports = router;

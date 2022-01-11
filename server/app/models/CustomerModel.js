@@ -19,7 +19,7 @@ Customer.getAll = (result) => {
 };
 
 Customer.getById = (id, result) => {
-  const sql = `SELECT * FROM khachhang where MSKH = '${id}'`;
+  const sql = `SELECT * FROM khachhang where User = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
