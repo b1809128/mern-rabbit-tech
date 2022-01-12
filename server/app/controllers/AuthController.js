@@ -22,11 +22,10 @@ exports.setLoginAuth = (req, res) => {
       if (password) {
         // console.log([password, result[0].password]);
         if (password === result[0].password) {
+          const userID = result[0].user;
           // res.send({ loggedIn: true, result: result });
-          const id = result[0].id;
-          const token = jwt.sign({ id }, "jwtSecret", {
-            expiresIn: 3600,
-          });
+          // console.log("id",result);
+          const token = jwt.sign({ userID }, "jwtSecret");
           res.json({ loggedIn: true, result: result, token: token });
         } else {
           res.send({ wrongPassword: "Wrong password.Please, try again !" });
@@ -51,13 +50,13 @@ exports.setRegisterAuth = (req, res) => {
   res.status(200).json("Add User Successful");
 };
 
+//Test JWT
 exports.testLoginAuth = (req, res) => {
   var user = req.body.user;
   var password = req.body.password;
   if (password) {
     var hashPash = crypto.createHash("md5").update(password).digest("hex");
   }
-
   Auth.checkLoginAuth(user, (result) => {
     if (result.length > 0) {
       if (password) {
@@ -76,4 +75,57 @@ exports.testLoginAuth = (req, res) => {
       res.send({ wrongUser: "User doesn't exist !" });
     }
   });
+};
+
+
+// Authorization
+exports.profileAuth = (req, res) => {
+  res.send({
+    logged: true,
+    message: "Customer and Admin can go here with your access token",
+  });
+};
+
+exports.adminAuth = (req, res) => {
+  res.send({
+    logged: true,
+    message: "Admin, You can go here with your access token",
+  });
+};
+
+//function reducer auth
+exports.checkAlreadyLogin = (req, res, next) => {
+  try {
+    var token = req.body.token;
+    var id = jwt.verify(token, "jwtSecret");
+    // console.log(id);
+    Auth.checkLoginAuth(id.userID, (result) => {
+      if (result) {
+        req.data = result[0];
+        next();
+      } else {
+        res.json({ logged: false, message: "Not Permission" });
+      }
+    });
+  } catch (error) {
+    res.json({ logged: false, message: "Not access token" });
+  }
+};
+
+exports.checkAuthenticationProfile = (req, res, next) => {
+  const role = req.data.role;
+  if (role == "customer" || role == "admin") {
+    next();
+  } else {
+    res.json({ logged: false, message: "Not Permission" });
+  }
+};
+
+exports.checkAuthenticationAdmin = (req, res, next) => {
+  const role = req.data.role;
+  if (role == "admin") {
+    next();
+  } else {
+    res.json({ logged: false, message: "Not Permission" });
+  }
 };
