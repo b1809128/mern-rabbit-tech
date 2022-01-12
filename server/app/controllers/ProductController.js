@@ -12,7 +12,7 @@ exports.getAllProducts = (req, res) => {
   } else if (req.query.sortBy == "NAME_DESC") {
     Product.getSortByNameDESC((result) => res.send(result));
   } else {
-    Product.getAllProducts((result) => res.send(result));
+    Product.getAll((result) => res.send(result));
   }
 };
 

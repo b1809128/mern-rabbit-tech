@@ -5,6 +5,7 @@ const manage = require("../controllers/ManageController");
 router.get("/api", manage.getAPI);
 router.get("/product", manage.getAllProduct);
 router.get("/user", manage.getAllUser);
+router.get("/customer", manage.getAllCustomer);
 router.get("/staff", manage.getAllStaff);
 router.get("/order", manage.getAllOrder);
 router.get("/order/details/:id", manage.getOrderDetails);

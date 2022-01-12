@@ -13,6 +13,14 @@ Auth.createUser = (data) => {
   });
 };
 
+Auth.getAll = (result) => {
+  const sql = "SELECT * FROM customer";
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
 Auth.checkLoginAuth = (user, result) => {
   const sql = `select * from customer where user='${user}'`;
   database.query(sql, (err, db) => {

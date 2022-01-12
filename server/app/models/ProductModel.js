@@ -11,7 +11,7 @@ const Product = (data) => {
   this.MaLoaiHang = data.MaLoaiHang;
 };
 
-Product.getAllProducts = (result) => {
+Product.getAll = (result) => {
   const sql = "SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH";
   database.query(sql, (err, data) => {
     if (err) throw err;

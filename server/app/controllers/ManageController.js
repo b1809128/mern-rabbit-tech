@@ -2,6 +2,7 @@ const Customer = require("../models/CustomerModel");
 const Product = require("../models/ProductModel");
 const Staff = require("../models/StaffModel");
 const Order = require("../models/OrderModel");
+const Auth = require("../models/AuthModel")
 const path = require("path");
 const multer = require("multer");
 // Set The Storage Engine
@@ -57,6 +58,13 @@ exports.getAllUser = (req, res) => {
     res.send(result);
   });
 };
+
+exports.getAllCustomer = (req, res) => {
+  Auth.getAll((result) => {
+    res.send(result);
+  });
+};
+
 exports.getAllStaff = (req, res) => {
   Staff.getAll((result) => {
     res.send(result);
