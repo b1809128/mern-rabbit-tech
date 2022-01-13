@@ -9,6 +9,7 @@ const Product = (data) => {
   this.Mota = data.Mota;
   this.HinhAnh = data.HinhAnh;
   this.MaLoaiHang = data.MaLoaiHang;
+  this.tags = data.tags;
 };
 
 Product.getAll = (result) => {
@@ -18,7 +19,6 @@ Product.getAll = (result) => {
     result(data);
   });
 };
-
 
 Product.getById = (id, result) => {
   const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH AND a.MSHH = '${id}'`;
@@ -71,6 +71,14 @@ Product.getSortByNameDESC = (result) => {
 
 Product.getBestSale = (result) => {
   const sql = `SELECT * FROM hanghoa where SoLuongHang <= 10`;
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
+Product.getSearch = (tagName, result) => {
+  const sql = `SELECT * from hinhanh as a, hanghoa as b where a.MSHH=b.MSHH and concat(',',b.tags,',') LIKE concat(',%${tagName}%,')`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);

@@ -10,6 +10,7 @@ router.get("/sort/price/desc", product.sortByPriceDESC);
 router.get("/sort/name/asc", product.sortByNameASC);
 router.get("/sort/name/desc", product.sortByNameDESC);
 router.get("/bestsale", product.bestSale);
+router.get("/search", product.search);
 //CREATE, UPDATE, DELETE in manage
 
 module.exports = router;

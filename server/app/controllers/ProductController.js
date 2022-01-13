@@ -58,4 +58,11 @@ exports.bestSale = (req, res) => {
   });
 };
 
+exports.search = (req, res) => {
+  const tagName = req.query.tag;
+  Product.getSearch(tagName, (result) => {
+    res.send(result);
+  });
+};
+
 //CREATE, UPDATE, DELETE in manage
