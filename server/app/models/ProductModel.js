@@ -70,7 +70,7 @@ Product.getSortByNameDESC = (result) => {
 };
 
 Product.getBestSale = (result) => {
-  const sql = `SELECT * FROM hanghoa where SoLuongHang <= 10`;
+  const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH and b.SoLuongHang <= 10`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
