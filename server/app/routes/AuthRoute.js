@@ -9,7 +9,6 @@ router.get("/logout", auth.logoutAuth);
 router.post("/profile", auth.checkAlreadyLogin, auth.checkAuthenticationProfile, auth.profileAuth);
 router.post("/admin", auth.checkAlreadyLogin, auth.checkAuthenticationAdmin, auth.adminAuth);
 
-
 //POST
 router.post("/login", auth.setLoginAuth);
 router.post("/register", auth.setRegisterAuth);

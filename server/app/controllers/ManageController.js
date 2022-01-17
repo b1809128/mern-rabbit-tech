@@ -241,3 +241,8 @@ exports.deleteOrderById = (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");
 };
+
+exports.allowDelete = function(req, res, next){
+  res.append('Access-Control-Allow-Methods', 'DELETE')
+  next()
+}

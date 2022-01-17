@@ -114,7 +114,7 @@ exports.checkAlreadyLogin = (req, res, next) => {
 
 exports.checkAuthenticationProfile = (req, res, next) => {
   const role = req.data.role;
-  if (role == "customer" || role == "admin") {
+  if (role == "customer" || role == "administrator") {
     next();
   } else {
     res.json({ logged: false, message: "Not Permission" });
@@ -123,7 +123,7 @@ exports.checkAuthenticationProfile = (req, res, next) => {
 
 exports.checkAuthenticationAdmin = (req, res, next) => {
   const role = req.data.role;
-  if (role == "admin") {
+  if (role == "administrator") {
     next();
   } else {
     res.json({ logged: false, message: "Not Permission" });
