@@ -3,6 +3,7 @@ const Product = require("../models/ProductModel");
 const Staff = require("../models/StaffModel");
 const Order = require("../models/OrderModel");
 const Auth = require("../models/AuthModel");
+const Images = require("../models/ImagesModel");
 const path = require("path");
 const multer = require("multer");
 // Set The Storage Engine
@@ -81,12 +82,11 @@ exports.addProduct = (req, res) => {
   data = [
     req.body.MSHH,
     req.body.TenHH,
-    req.body.Gia_Cu,
     req.body.Gia,
     req.body.SoLuongHang,
-    req.body.Mota,
-    req.body.HinhAnh,
+    JSON.stringify(req.body.Mota),
     req.body.MaLoaiHang,
+    req.body.tags
   ];
   Product.addProduct(data);
   //SetHeader fix err_http
@@ -121,6 +121,13 @@ exports.uploadImage = (req, res) => {
       }
     }
   });
+};
+
+exports.uploadImageJson = (req, res) => {
+  data= [req.body.MSHH,JSON.stringify(req.body.PATH)]
+  Images.uploadImageJson(data)
+  // res.send(data);
+  res.status(200).json("Images Uploaded Successful");
 };
 
 //UPDATE
@@ -211,7 +218,7 @@ exports.updateOrderNotAll = (req, res) => {
 exports.deleteProductById = (req, res) => {
   Product.deleteProductById(req.params.id);
   res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Delete User Successful");
+  res.status(200).json("Delete Product Successful");
 };
 
 exports.deleteUserById = (req, res) => {

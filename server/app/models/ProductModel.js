@@ -3,11 +3,9 @@ const database = require("../database/connect");
 const Product = (data) => {
   this.MSHH = data.MSHH;
   this.TenHH = data.TenHH;
-  this.Gia_Cu = data.Gia_Cu;
   this.Gia = data.Gia;
   this.SoLuongHang = data.SoLuongHang;
   this.Mota = data.Mota;
-  this.HinhAnh = data.HinhAnh;
   this.MaLoaiHang = data.MaLoaiHang;
   this.tags = data.tags;
 };
@@ -87,7 +85,7 @@ Product.getSearch = (tagName, result) => {
 
 Product.addProduct = (data) => {
   const sql =
-    "INSERT INTO hanghoa(MSHH,TenHH,Gia_Cu,Gia,SoLuongHang,Mota,HinhAnh,MaLoaiHang) values (?,?,?,?,?,?,?,?)";
+    "INSERT INTO hanghoa(MSHH,TenHH,Gia,SoLuongHang,Mota,MaLoaiHang,tags) values (?,?,?,?,?,?,?)";
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });

@@ -11,7 +11,7 @@ router.get("/order/details/:id", manage.getOrderDetails);
 //CREATE
 router.post("/product/add", manage.addProduct);
 router.post("/staff/add", manage.addStaff);
-router.post("/upload", manage.uploadImage);
+router.post("/image/upload", manage.uploadImageJson);
 //UPDATE
 router.put("/product/update/:id", manage.updateProductById);
 router.put("/customer/update/:id", manage.updateUserById);
