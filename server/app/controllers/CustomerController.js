@@ -22,13 +22,10 @@ exports.getDetailsOrderById = (req, res) => {
 //CREATE
 exports.addCustomer = (req, res) => {
   data = [
-    req.body.MSKH,
-    req.body.HoTenKH,
-    req.body.TenCongTy,
-    req.body.SoDienThoai,
-    req.body.Email,
-    req.body.User,
-    req.body.Password,
+    req.body.id,
+    req.body.user,
+    req.body.password,
+    req.body.role,
   ];
   Customer.addCustomer(data);
   res.setHeader("Content-Type", "application/json");
@@ -38,13 +35,10 @@ exports.addCustomer = (req, res) => {
 //UPDATE
 exports.updateCustomerById = (req, res) => {
   data = [
-    req.body.MSKH,
-    req.body.HoTenKH,
-    req.body.TenCongTy,
-    req.body.SoDienThoai,
-    req.body.Email,
-    req.body.User,
-    req.body.Password,
+    req.body.id,
+    req.body.user,
+    req.body.password,
+    req.body.role,
   ];
   Customer.updateCustomerById(req.params.id, data);
   res.setHeader("Content-Type", "application/json");

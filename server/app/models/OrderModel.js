@@ -5,7 +5,6 @@ const Order = (data) => {
   this.id = data.id;
   this.id_staff = data.id_staff;
   this.created_at = data.created_at;
-  
 };
 
 Order.getAll = (result) => {

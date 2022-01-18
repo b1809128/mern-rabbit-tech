@@ -2,7 +2,7 @@ const Customer = require("../models/CustomerModel");
 const Product = require("../models/ProductModel");
 const Staff = require("../models/StaffModel");
 const Order = require("../models/OrderModel");
-const Auth = require("../models/AuthModel")
+const Auth = require("../models/AuthModel");
 const path = require("path");
 const multer = require("multer");
 // Set The Storage Engine
@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 // Init Upload
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 10*1024*1024 },
+  limits: { fileSize: 10 * 1024 * 1024 },
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },
@@ -49,12 +49,6 @@ exports.getAPI = (req, res) => {
 
 exports.getAllProduct = (req, res) => {
   Product.getAll((result) => {
-    res.send(result);
-  });
-};
-
-exports.getAllUser = (req, res) => {
-  Customer.getAll((result) => {
     res.send(result);
   });
 };
@@ -118,14 +112,10 @@ exports.addStaff = (req, res) => {
 exports.uploadImage = (req, res) => {
   upload(req, res, (err) => {
     if (err) {
-      res.json(
-         err
-      );
+      res.json(err);
     } else {
       if (req.file == undefined) {
-        res.json(
-          "Error: No File Selected!",
-        );
+        res.json("Error: No File Selected!");
       } else {
         res.json("File Uploaded!");
       }
@@ -241,8 +231,3 @@ exports.deleteOrderById = (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");
 };
-
-exports.allowDelete = function(req, res, next){
-  res.append('Access-Control-Allow-Methods', 'DELETE')
-  next()
-}

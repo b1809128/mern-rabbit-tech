@@ -1,17 +1,14 @@
 const database = require("../database/connect");
 
 const Customer = (data) => {
-  this.MSKH = data.MSKH;
-  this.HoTenKH = data.HoTenKH;
-  this.TenCongTy = data.TenCongTy;
-  this.SoDienThoai = data.SoDienThoai;
-  this.Email = data.Email;
-  this.User = data.User;
-  this.Password = data.Password;
+  this.id = data.id;
+  this.user = data.user;
+  this.password = data.password;
+  this.role = data.role;
 };
 
 Customer.getAll = (result) => {
-  const sql = "SELECT * FROM khachhang";
+  const sql = "SELECT * FROM customer";
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
@@ -19,7 +16,7 @@ Customer.getAll = (result) => {
 };
 
 Customer.getById = (id, result) => {
-  const sql = `SELECT * FROM khachhang where User = '${id}'`;
+  const sql = `SELECT * FROM customer where id = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
@@ -27,7 +24,7 @@ Customer.getById = (id, result) => {
 };
 
 Customer.getAllOrderCustomerById = (id, result) => {
-  const sql = `SELECT * FROM dathang where MSKH = '${id}'`;
+  const sql = `SELECT * FROM customer where id = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
@@ -35,7 +32,7 @@ Customer.getAllOrderCustomerById = (id, result) => {
 };
 
 Customer.getDetailsOrderById = (id, result) => {
-  const sql = `SELECT * FROM chitietdathang where SoDonDH = '${id}'`;
+  const sql = `SELECT * FROM details_order where id_order = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
@@ -44,28 +41,28 @@ Customer.getDetailsOrderById = (id, result) => {
 
 Customer.addCustomer = (data) => {
   const sql =
-    "INSERT INTO khachhang(MSKH,HoTenKH,TenCongTy,SoDienThoai,Email,User,Password) values (?,?,?,?,?,?,?)";
+    "INSERT INTO customer(id,user,password,role) values (?,?,?,'customer')";
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
 Customer.updateCustomerById = (id, data) => {
-  const sql = `update khachhang set MSKH=?,HoTenKH=?,TenCongTy=?,SoDienThoai=?,Email=?,User=?,Password=? where MSKH='${id}'`;
+  const sql = `update customer set id=?,user=?,password=?,role=? where id='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
 Customer.updateCustomerNotAll = (id, data) => {
-  const sql = `update khachhang set ? where MSKH='${id}'`;
+  const sql = `update customer set ? where id='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
 Customer.deleteCustomerById = (id) => {
-  const sql = `delete from khachhang where MSKH='${id}'`;
+  const sql = `delete from customer where id='${id}'`;
   database.query(sql, (err, db) => {
     if (err) throw err;
   });
