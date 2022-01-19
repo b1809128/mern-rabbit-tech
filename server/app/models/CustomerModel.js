@@ -47,7 +47,7 @@ Customer.addCustomer = (data) => {
   });
 };
 
-Customer.updateCustomerById = (id, data) => {
+Customer.updatePutCustomerById = (id, data) => {
   const sql = `update customer set id=?,user=?,password=?,role=? where id='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
@@ -55,7 +55,7 @@ Customer.updateCustomerById = (id, data) => {
 };
 
 Customer.updateCustomerNotAll = (id, data) => {
-  const sql = `update customer set ? where id='${id}'`;
+  const sql = `update customer set ? where user='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });

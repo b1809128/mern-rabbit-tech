@@ -6,7 +6,7 @@ const Auth = require("../models/AuthModel");
 const Images = require("../models/ImagesModel");
 const path = require("path");
 const multer = require("multer");
-// Set The Storage Engine
+//FIXME: Set The Storage Engine
 const storage = multer.diskStorage({
   destination: "./images",
   filename: function (req, file, cb) {
@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
   },
 });
 
-// Init Upload
+//TODO: Init Upload
 const upload = multer({
   storage: storage,
   limits: { fileSize: 10 * 1024 * 1024 },
@@ -42,7 +42,7 @@ function checkFileType(file, cb) {
   }
 }
 
-//READ
+//TODO: READ
 exports.getAPI = (req, res) => {
   Customer.getAll((result) => res.send(result));
   res.setHeader("Content-Type", "application/json");
@@ -77,7 +77,7 @@ exports.getOrderDetails = (req, res) => {
   });
 };
 
-//CREATE
+//TODO:CREATE
 exports.addProduct = (req, res) => {
   data = [
     req.body.MSHH,
@@ -123,6 +123,7 @@ exports.uploadImage = (req, res) => {
   });
 };
 
+//FIXME: Must be stringify the JSON data after push to mysql
 exports.uploadImageJson = (req, res) => {
   data= [req.body.MSHH,JSON.stringify(req.body.PATH)]
   Images.uploadImageJson(data)
@@ -130,7 +131,7 @@ exports.uploadImageJson = (req, res) => {
   res.status(200).json("Images Uploaded Successful");
 };
 
-//UPDATE
+//TODO: UPDATE
 exports.updateProductById = (req, res) => {
   data = [
     req.body.MSHH,
@@ -178,7 +179,7 @@ exports.updateStaffById = (req, res) => {
   res.status(200).json("Update User Successful");
 };
 
-//None Complete [add more column check already]
+//FIXME: [add more column check already]
 exports.updateOrderById = (req, res) => {
   data = [req.body.check];
   Order.updateOrderById(req.params.id, data);
@@ -193,11 +194,11 @@ exports.updateProductNotAll = (req, res) => {
   res.status(200).json("Update Product Successful");
 };
 
-exports.updateUserNotAll = (req, res) => {
+exports.updateCustomerNotAll = (req, res) => {
   data = [req.body];
   Customer.updateCustomerNotAll(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update User Successful");
+  res.status(200).json("Update Customer Successful");
 };
 
 exports.updateStaffNotAll = (req, res) => {
@@ -214,7 +215,7 @@ exports.updateOrderNotAll = (req, res) => {
   res.status(200).json("Update User Successful");
 };
 
-//DELETE
+//TODO: DELETE
 exports.deleteProductById = (req, res) => {
   Product.deleteProductById(req.params.id);
   res.setHeader("Content-Type", "application/json");

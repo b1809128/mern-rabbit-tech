@@ -33,14 +33,14 @@ exports.addCustomer = (req, res) => {
 };
 
 //UPDATE
-exports.updateCustomerById = (req, res) => {
+exports.updatePutCustomerById = (req, res) => {
   data = [
     req.body.id,
     req.body.user,
     req.body.password,
     req.body.role,
   ];
-  Customer.updateCustomerById(req.params.id, data);
+  Customer.updatePutCustomerById(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update User Successful");
 };

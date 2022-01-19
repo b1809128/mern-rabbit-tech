@@ -8,7 +8,7 @@ router.get("/order/details/:id", customer.getDetailsOrderById);
 //CREATE
 router.post("/add", customer.addCustomer);
 //UPDATE
-router.put("/update/:id", customer.updateCustomerById);
+router.put("/update/:id", customer.updatePutCustomerById);
 //DELETE
 router.delete("/delete/:id", customer.deleteCustomerById);
 module.exports = router;

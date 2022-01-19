@@ -17,7 +17,7 @@ router.put("/product/update/:id", manage.updateProductById);
 router.put("/customer/update/:id", manage.updateUserById);
 router.put("/staff/update/:id", manage.updateStaffById);
 router.put("/order/update/:id", manage.updateOrderById);
-router.patch("/customer/updateonly/:id", manage.updateUserNotAll);
+router.patch("/customer/updateonly/:id", manage.updateCustomerNotAll);
 router.patch("/product/updateonly/:id", manage.updateProductNotAll);
 router.patch("/staff/updateonly/:id", manage.updateStaffNotAll);
 router.patch("/order/updateonly/:id", manage.updateOrderNotAll);
