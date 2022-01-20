@@ -17,7 +17,7 @@ Order.getAll = (result) => {
 };
 
 Order.getOrderCustomerById = (id, result) => {
-  const sql = `SELECT * FROM details_order where id_order=${id}`;
+  const sql = `SELECT * FROM details_order as a, hinhanh as b, hanghoa as c where a.id_order=${id} and a.MSHH = c.MSHH and b.MSHH = c.MSHH`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
