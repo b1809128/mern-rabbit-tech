@@ -5,6 +5,7 @@ const Order = (data) => {
   this.id = data.id;
   this.id_staff = data.id_staff;
   this.created_at = data.created_at;
+  this.status = data.status;
 };
 
 Order.getAll = (result) => {
@@ -29,6 +30,14 @@ Order.updateOrderNotAll = (id, data) => {
     if (err) throw err;
   });
 };
+
+Order.updateOrderDetailsNotAll = (id, data) => {
+  const sql = `update details_order set ? where id_order='${id}'`;
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
 
 Order.deleteOrderById = (id) => {
   const sql = `delete from order_product where id_order = '${id}'`;

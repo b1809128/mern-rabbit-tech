@@ -212,7 +212,14 @@ exports.updateOrderNotAll = (req, res) => {
   data = [req.body];
   Order.updateOrderNotAll(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update User Successful");
+  res.status(200).json("Update Order Successful");
+};
+
+exports.updateOrderDetailsNotAll = (req, res) => {
+  data = [req.body];
+  Order.updateOrderDetailsNotAll(req.params.id, data);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Update Order Successful");
 };
 
 //TODO: DELETE

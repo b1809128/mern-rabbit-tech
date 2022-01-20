@@ -21,6 +21,7 @@ router.patch("/customer/updateonly/:id", manage.updateCustomerNotAll);
 router.patch("/product/updateonly/:id", manage.updateProductNotAll);
 router.patch("/staff/updateonly/:id", manage.updateStaffNotAll);
 router.patch("/order/updateonly/:id", manage.updateOrderNotAll);
+router.patch("/order/details/updateonly/:id", manage.updateOrderDetailsNotAll);
 
 //DELETE
 router.delete("/product/delete/:id", manage.deleteProductById);
