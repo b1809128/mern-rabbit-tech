@@ -16,7 +16,15 @@ Order.getAll = (result) => {
   });
 };
 
-Order.getOrderCustomerById = (id, result) => {
+Order.getOnlyOrderById = (id, result) => {
+  const sql = `SELECT * FROM order_product where id_order=${id}`;
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
+Order.getOrderDetailsById = (id, result) => {
   const sql = `SELECT * FROM details_order as a, hinhanh as b, hanghoa as c where a.id_order=${id} and a.MSHH = c.MSHH and b.MSHH = c.MSHH`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -37,7 +45,6 @@ Order.updateOrderDetailsNotAll = (id, data) => {
     if (err) throw err;
   });
 };
-
 
 Order.deleteOrderById = (id) => {
   const sql = `delete from order_product where id_order = '${id}'`;

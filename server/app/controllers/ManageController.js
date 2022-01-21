@@ -71,8 +71,14 @@ exports.getAllOrder = (req, res) => {
   });
 };
 
-exports.getOrderDetails = (req, res) => {
-  Order.getOrderCustomerById(req.params.id, (result) => {
+exports.getOnlyOrderById = (req, res) => {
+  Order.getOnlyOrderById(req.params.id,(result) => {
+    res.send(result);
+  });
+};
+
+exports.getOrderDetailsById = (req, res) => {
+  Order.getOrderDetailsById(req.params.id, (result) => {
     res.send(result);
   });
 };

@@ -7,7 +7,8 @@ router.get("/product", manage.getAllProduct);
 router.get("/customer", manage.getAllCustomer);
 router.get("/staff", manage.getAllStaff);
 router.get("/order", manage.getAllOrder);
-router.get("/order/details/:id", manage.getOrderDetails);
+router.get("/order/:id", manage.getOnlyOrderById);
+router.get("/order/details/:id", manage.getOrderDetailsById);
 //CREATE
 router.post("/product/add", manage.addProduct);
 router.post("/staff/add", manage.addStaff);
