@@ -15,8 +15,8 @@ Customer.getAll = (result) => {
   });
 };
 
-Customer.getById = (id, result) => {
-  const sql = `SELECT * FROM customer as a, address as b where a.id = '${id}' and a.id = b.id`;
+Customer.getAddressById = (id, result) => {
+  const sql = `SELECT * FROM  address where id = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const customer = require("../controllers/CustomerController");
 //READ
-router.get("/details/:id", customer.details);
+router.get("/address/:id", customer.getAddressById);
 router.get("/order/:id", customer.getAllOrderCustomerById);
 router.get("/order/details/:id", customer.getDetailsOrderById);
 //CREATE
