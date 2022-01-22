@@ -1,8 +1,8 @@
 const Customer = require("../models/CustomerModel");
 
 //READ
-exports.getAddressById = (req, res) => {
-  Customer.getAddressById(req.params.id, (result) => {
+exports.getAllHaveAddressById = (req, res) => {
+  Customer.getAllHaveAddressById(req.params.id, (result) => {
     res.send(result);
   });
 };

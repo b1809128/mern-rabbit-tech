@@ -15,8 +15,8 @@ Customer.getAll = (result) => {
   });
 };
 
-Customer.getAddressById = (id, result) => {
-  const sql = `SELECT * FROM  address where id = '${id}'`;
+Customer.getAllHaveAddressById = (id, result) => {
+  const sql = `SELECT * FROM  customer INNER JOIN address ON customer.id = address.id WHERE customer.id = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
@@ -24,7 +24,7 @@ Customer.getAddressById = (id, result) => {
 };
 
 Customer.getAllOrderCustomerById = (id, result) => {
-  const sql = `SELECT * FROM customer where id = '${id}'`;
+  const sql = `SELECT * FROM order_product where id = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
