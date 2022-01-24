@@ -21,25 +21,28 @@ exports.getDetailsOrderById = (req, res) => {
 
 //CREATE
 exports.addCustomer = (req, res) => {
-  data = [
-    req.body.id,
-    req.body.user,
-    req.body.password,
-    req.body.role,
-  ];
+  data = [req.body.id, req.body.user, req.body.password, req.body.role];
   Customer.addCustomer(data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Add User Successful");
 };
 
-//UPDATE
-exports.updatePutCustomerById = (req, res) => {
+exports.addAddressCustomer = (req, res) => {
   data = [
     req.body.id,
-    req.body.user,
-    req.body.password,
-    req.body.role,
+    req.body.fullname,
+    req.body.phonenumber,
+    req.body.email,
+    req.body.addressdetails,
   ];
+  Customer.addAddressCustomer(data);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Add Address Successful");
+};
+
+//UPDATE
+exports.updatePutCustomerById = (req, res) => {
+  data = [req.body.id, req.body.user, req.body.password, req.body.role];
   Customer.updatePutCustomerById(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update User Successful");

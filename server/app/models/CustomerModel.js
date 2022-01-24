@@ -47,6 +47,14 @@ Customer.addCustomer = (data) => {
   });
 };
 
+Customer.addAddressCustomer = (data) => {
+  const sql =
+    "INSERT INTO address(id, fullname,phonenumber,email,addressdetails) values (?,?,?,?,?)";
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
 Customer.updatePutCustomerById = (id, data) => {
   const sql = `update customer set id=?,user=?,password=?,role=? where id='${id}'`;
   database.query(sql, data, (err, db) => {
@@ -55,7 +63,7 @@ Customer.updatePutCustomerById = (id, data) => {
 };
 
 Customer.updateCustomerNotAll = (id, data) => {
-  const sql = `update customer set ? where user='${id}'`;
+  const sql = `update customer set ? where id='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });

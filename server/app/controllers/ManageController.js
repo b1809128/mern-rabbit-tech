@@ -235,7 +235,7 @@ exports.deleteProductById = (req, res) => {
   res.status(200).json("Delete Product Successful");
 };
 
-exports.deleteUserById = (req, res) => {
+exports.deleteCustomerById = (req, res) => {
   Customer.deleteCustomerById(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");

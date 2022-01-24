@@ -26,7 +26,7 @@ router.patch("/order/details/updateonly/:id", manage.updateOrderDetailsNotAll);
 
 //DELETE
 router.delete("/product/delete/:id", manage.deleteProductById);
-router.delete("/customer/delete/:id", manage.deleteUserById);
+router.delete("/customer/delete/:id", manage.deleteCustomerById);
 router.delete("/staff/delete/:id", manage.deleteStaffById);
 router.delete("/order/delete/:id", manage.deleteOrderById);
 
