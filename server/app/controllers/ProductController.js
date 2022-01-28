@@ -17,7 +17,7 @@ exports.getAllProducts = (req, res) => {
 };
 
 exports.details = (req, res) => {
-  Product.getById(req.params.id, (result) => {
+  Product.getDetailsById(req.params.id, (result) => {
     res.send(result);
   });
 };

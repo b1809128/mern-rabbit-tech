@@ -1,6 +1,5 @@
 const Customer = require("../models/CustomerModel");
 const Product = require("../models/ProductModel");
-const Staff = require("../models/StaffModel");
 const Order = require("../models/OrderModel");
 const Auth = require("../models/AuthModel");
 const Images = require("../models/ImagesModel");
@@ -72,7 +71,7 @@ exports.getAllOrder = (req, res) => {
 };
 
 exports.getOnlyOrderById = (req, res) => {
-  Order.getOnlyOrderById(req.params.id,(result) => {
+  Order.getOnlyOrderById(req.params.id, (result) => {
     res.send(result);
   });
 };
@@ -92,7 +91,7 @@ exports.addProduct = (req, res) => {
     req.body.SoLuongHang,
     JSON.stringify(req.body.Mota),
     req.body.MaLoaiHang,
-    req.body.tags
+    req.body.tags,
   ];
   Product.addProduct(data);
   //SetHeader fix err_http
@@ -131,8 +130,8 @@ exports.uploadImage = (req, res) => {
 
 //FIXME: Must be stringify the JSON data after push to mysql
 exports.uploadImageJson = (req, res) => {
-  data= [req.body.MSHH,JSON.stringify(req.body.PATH)]
-  Images.uploadImageJson(data)
+  data = [req.body.MSHH, JSON.stringify(req.body.PATH)];
+  Images.uploadImageJson(data);
   // res.send(data);
   res.status(200).json("Images Uploaded Successful");
 };
@@ -170,21 +169,6 @@ exports.updateUserById = (req, res) => {
   res.status(200).json("Update User Successful");
 };
 
-exports.updateStaffById = (req, res) => {
-  data = [
-    req.body.MSNV,
-    req.body.HoTenNV,
-    req.body.ChucVu,
-    req.body.DiaChi,
-    req.body.SoDienThoai,
-    req.body.User,
-    req.body.Password,
-  ];
-  Staff.updateStaffById(req.params.id, data);
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update User Successful");
-};
-
 //FIXME: [add more column check already]
 exports.updateOrderById = (req, res) => {
   data = [req.body.check];
@@ -205,13 +189,6 @@ exports.updateCustomerNotAll = (req, res) => {
   Customer.updateCustomerNotAll(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Customer Successful");
-};
-
-exports.updateStaffNotAll = (req, res) => {
-  data = [req.body];
-  Staff.updateStaffNotAll(req.params.id, data);
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update Staff Successful");
 };
 
 exports.updateOrderNotAll = (req, res) => {
@@ -237,12 +214,6 @@ exports.deleteProductById = (req, res) => {
 
 exports.deleteCustomerById = (req, res) => {
   Customer.deleteCustomerById(req.params.id);
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Delete User Successful");
-};
-
-exports.deleteStaffById = (req, res) => {
-  Staff.deleteStaffById(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");
 };

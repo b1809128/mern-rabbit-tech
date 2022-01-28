@@ -1,6 +1,7 @@
 const Auth = require("../models/AuthModel");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
+
 exports.loginAuth = (req, res) => {
   if (req.session.user) {
     res.send({ loggedIn: true, user: req.session.user });

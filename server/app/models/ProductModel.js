@@ -18,7 +18,7 @@ Product.getAll = (result) => {
   });
 };
 
-Product.getById = (id, result) => {
+Product.getDetailsById = (id, result) => {
   const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH AND a.MSHH = '${id}'`;
   // const sql = `SELECT * FROM hanghoa where MSHH = '${id}'`;
   database.query(sql, (err, data) => {
