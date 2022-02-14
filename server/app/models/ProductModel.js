@@ -92,7 +92,7 @@ Product.addProduct = (data) => {
 };
 
 Product.updateProductById = (id, data) => {
-  const sql = `update hanghoa set MSHH = ?,TenHH = ?,Gia_Cu = ?,Gia = ?,SoLuongHang = ?,Mota = ?,HinhAnh = ?,MaLoaiHang = ? where MSHH='${id}'`;
+  const sql = `update hanghoa set MSHH = ?,TenHH = ?,Gia = ?,SoLuongHang = ?,Mota = ?,MaLoaiHang = ?,tags = ? where MSHH='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });

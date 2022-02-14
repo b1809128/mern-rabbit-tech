@@ -13,6 +13,13 @@ Images.uploadImageJson = (data) => {
   });
 };
 
+Images.updateProductImageById = (id, data) => {
+  const sql = `update hinhanh set PATH=? where MSHH='${id}'`;
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
 /**
  {
     "MSHH":"as_004",

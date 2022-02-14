@@ -141,17 +141,24 @@ exports.updateProductById = (req, res) => {
   data = [
     req.body.MSHH,
     req.body.TenHH,
-    req.body.Gia_Cu,
     req.body.Gia,
     req.body.SoLuongHang,
-    req.body.Mota,
-    req.body.HinhAnh,
+    JSON.stringify(req.body.Mota),
     req.body.MaLoaiHang,
+    req.body.tags,
   ];
   Product.updateProductById(req.params.id, data);
   //SetHeader fix err_http
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Product Successful");
+};
+
+exports.updateProductImageById = (req, res) => {
+  data = [req.body.MSHH, JSON.stringify(req.body.PATH)];
+  Product.updateProductById(req.params.id, data);
+  //SetHeader fix err_http
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Update Product Images Successful");
 };
 
 exports.updateUserById = (req, res) => {

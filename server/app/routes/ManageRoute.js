@@ -13,6 +13,7 @@ router.post("/product/add", manage.addProduct);
 router.post("/image/upload", manage.uploadImageJson);
 //UPDATE
 router.put("/product/update/:id", manage.updateProductById);
+router.put("/product/image/update/:id", manage.updateProductImageById);
 router.put("/customer/update/:id", manage.updateUserById);
 router.put("/order/update/:id", manage.updateOrderById);
 router.patch("/customer/updateonly/:id", manage.updateCustomerNotAll);
