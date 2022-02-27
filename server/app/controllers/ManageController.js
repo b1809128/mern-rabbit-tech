@@ -82,6 +82,20 @@ exports.getOrderDetailsById = (req, res) => {
   });
 };
 
+exports.getTableSearch = (req, res) => {
+  Customer.getAll((result) => {
+    const { q } = req.query;
+    const keys = ["id", "user", "role"];
+    const search = (result) => {
+      return result.filter((data) =>
+        keys.some((item) => data[item].toString().includes(q))
+      );
+    };
+
+    q ? res.json(search(result)) : res.json(result);
+  });
+};
+
 //TODO:CREATE
 exports.addProduct = (req, res) => {
   data = [
