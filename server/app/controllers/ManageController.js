@@ -82,13 +82,49 @@ exports.getOrderDetailsById = (req, res) => {
   });
 };
 
-exports.getTableSearch = (req, res) => {
+exports.getTableCustomerSearch = (req, res) => {
   Customer.getAll((result) => {
     const { q } = req.query;
     const keys = ["id", "user", "role"];
     const search = (result) => {
       return result.filter((data) =>
-        keys.some((item) => data[item].toString().includes(q))
+        keys.some((item) => data[item].toString().toLowerCase().includes(q))
+      );
+    };
+
+    q ? res.json(search(result)) : res.json(result);
+  });
+};
+
+exports.getTableProductSearch = (req, res) => {
+  Product.getAll((result) => {
+    const { q } = req.query;
+    const keys = [
+      "MSHH",
+      "TenHH",
+      "SoLuongHang",
+      "Gia",
+      "MoTa",
+      "MaLoaiHang",
+      "tags",
+    ];
+    const search = (result) => {
+      return result.filter((data) =>
+        keys.some((item) => data[item].toString().toLowerCase().includes(q))
+      );
+    };
+
+    q ? res.json(search(result)) : res.json(result);
+  });
+};
+
+exports.getTableOrderSearch = (req, res) => {
+  Order.getAll((result) => {
+    const { q } = req.query;
+    const keys = ["id_order", "id", "id_staff", "created_at", "status"];
+    const search = (result) => {
+      return result.filter((data) =>
+        keys.some((item) => data[item].toString().toLowerCase().includes(q))
       );
     };
 

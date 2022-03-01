@@ -8,7 +8,9 @@ router.get("/customer", manage.getAllCustomer);
 router.get("/order", manage.getAllOrder);
 router.get("/order/:id", manage.getOnlyOrderById);
 router.get("/order/details/:id", manage.getOrderDetailsById);
-router.get("/table/customer/search", manage.getTableSearch);
+router.get("/table/customer/search", manage.getTableCustomerSearch);
+router.get("/table/product/search", manage.getTableProductSearch);
+router.get("/table/order/search", manage.getTableOrderSearch);
 
 //CREATE
 router.post("/product/add", manage.addProduct);
