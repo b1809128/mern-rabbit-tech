@@ -104,7 +104,6 @@ exports.getTableProductSearch = (req, res) => {
       "TenHH",
       "SoLuongHang",
       "Gia",
-      "MoTa",
       "MaLoaiHang",
       "tags",
     ];
