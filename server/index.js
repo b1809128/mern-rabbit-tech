@@ -5,25 +5,22 @@ const productRouter = require("./app/routes/ProductRoute");
 const customerRouter = require("./app/routes/CustomerRoute");
 const manageRouter = require("./app/routes/ManageRoute");
 const authRouter = require("./app/routes/AuthRoute");
-const Auth = require("./app/models/AuthModel");
 const cors = require("cors");
 const app = express();
 
 //Express-Session
-/*const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 app.use(cookieParser());
 app.use(session({
-  key: "userId",
-  secret: "subscribe",
+  secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: false,
-  cookie: {
-    expires: 60 * 60 * 24,
-  },
+  saveUninitialized: true,
+  cookie: { secure: true }
 }))
-*/
+
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

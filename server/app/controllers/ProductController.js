@@ -66,3 +66,42 @@ exports.search = (req, res) => {
 };
 
 //CREATE, UPDATE, DELETE in manage
+
+//Create
+
+exports.addToCart = (req, res) => {
+  var slug = req.params.slug;
+  Product.getDetailsById(slug, (result) => {
+    if (typeof req.cookies.cart === "undefined") {
+      req.cookies.cart = [];
+      req.cookies.cart.push({
+        MSHH: slug,
+        SoLuongHang: 1,
+        Gia: result.map((data) => data.Gia),
+      });
+    } else {
+      var cart = req.cookies.cart;
+      var newItem = true;
+      for (let i = 0; i < cart.lenght; i++) {
+        if (cart[i].MSHH === slug) {
+          cart[i].SoLuongHang++;
+          newItem = false;
+          break;
+        }
+      }
+      if (newItem) {
+        cart.push({
+          MSHH: slug,
+          SoLuongHang: 1,
+          Gia: result.map((data) => data.Gia),
+        });
+      }
+    }
+    res.send(req.cookies.cart);
+    console.log(req.cookies.cart);
+  });
+};
+
+exports.getCheckOut = (req, res) => {
+  res.send(req.cookies.cart);
+};
