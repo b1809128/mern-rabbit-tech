@@ -14,10 +14,11 @@ const session = require("express-session");
 
 app.use(cookieParser());
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'secret-token',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: { secure: true },
+  cookie: { maxAge: 60000 }
 }))
 
 

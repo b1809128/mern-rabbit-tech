@@ -10,4 +10,5 @@ router.get("/search", product.search);
 //CREATE, UPDATE, DELETE in manage
 router.get("/cart/:slug",product.addToCart);
 router.get("/checkout",product.getCheckOut);
+router.get("/setcookie", product.productSetCookie);
 module.exports = router;

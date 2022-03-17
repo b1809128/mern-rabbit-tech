@@ -72,17 +72,17 @@ exports.search = (req, res) => {
 exports.addToCart = (req, res) => {
   var slug = req.params.slug;
   Product.getDetailsById(slug, (result) => {
-    if (typeof req.cookies.cart === "undefined") {
-      req.cookies.cart = [];
-      req.cookies.cart.push({
+    if (typeof req.session.cart === "undefined") {
+      req.session.cart = [];
+      req.session.cart.push({
         MSHH: slug,
         SoLuongHang: 1,
         Gia: result.map((data) => data.Gia),
       });
     } else {
-      var cart = req.cookies.cart;
+      var cart = req.session.cart;
       var newItem = true;
-      for (let i = 0; i < cart.lenght; i++) {
+      for (let i = 0; i < cart.length; i++) {
         if (cart[i].MSHH === slug) {
           cart[i].SoLuongHang++;
           newItem = false;
@@ -97,11 +97,17 @@ exports.addToCart = (req, res) => {
         });
       }
     }
-    res.send(req.cookies.cart);
-    console.log(req.cookies.cart);
+    // res.cookie("cart", array, { expire: 400000 + Date.now() });
+    res.send(req.session.cart);
+    console.log(req.session.cart);
   });
 };
 
+exports.productSetCookie = (req, res) => {
+  res.cookie("cart", "value", { expire: 400000 + Date.now() });
+  res.send(req.cookies);
+};
+
 exports.getCheckOut = (req, res) => {
-  res.send(req.cookies.cart);
+  res.send(req.session.cart);
 };
