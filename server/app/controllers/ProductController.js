@@ -99,7 +99,7 @@ exports.addToCart = (req, res) => {
     }
     // res.cookie("cart", array, { expire: 400000 + Date.now() });
     res.send(req.session.cart);
-    console.log(req.session.cart);
+    // console.log(req.session.cart.length);
   });
 };
 
