@@ -15,9 +15,9 @@ const session = require("express-session");
 app.use(cookieParser());
 app.use(session({
   secret: 'secret-token',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
-  cookie: { secure: true },
+  // cookie: { secure: true },
   cookie: { maxAge: 60000 }
 }))
 
