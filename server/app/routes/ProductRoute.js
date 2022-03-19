@@ -11,5 +11,4 @@ router.get("/search", product.search);
 router.post("/cart/:slug", product.addToCart);
 router.get("/checkout", product.getCheckOut);
 router.get("/setcookie", product.productSetCookie);
-router.post("/test", product.testAPI);
 module.exports = router;

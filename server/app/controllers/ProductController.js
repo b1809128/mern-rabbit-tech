@@ -112,8 +112,3 @@ exports.getCheckOut = (req, res) => {
   res.send(req.session.cart);
 };
 
-exports.testAPI = (req, res) => {
-  const data = [req.body.cart]
-  res.send(data);
-  console.log(data);
-};
