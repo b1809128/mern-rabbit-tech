@@ -8,6 +8,10 @@ router.get("/order/details/:id", customer.getDetailsOrderById);
 //CREATE
 router.post("/add", customer.addCustomer);
 router.post("/address/add/", customer.addAddressCustomer);
+router.post("/order/add", customer.addOrder);
+router.post("/order-details/add", customer.addOrderDetails);
+
+
 //UPDATE
 router.put("/update/:id", customer.updatePutCustomerById);
 //DELETE

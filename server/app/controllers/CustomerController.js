@@ -1,5 +1,5 @@
 const Customer = require("../models/CustomerModel");
-
+const Order = require("../models/OrderModel");
 //READ
 exports.getAllHaveAddressById = (req, res) => {
   Customer.getAllHaveAddressById(req.params.id, (result) => {
@@ -38,6 +38,30 @@ exports.addAddressCustomer = (req, res) => {
   Customer.addAddressCustomer(data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Add Address Successful");
+};
+
+exports.addOrder = (req, res) => {
+  const id_order = Math.floor(Math.random() * 10000)+Math.floor(Math.random() * 100)
+  const data = [id_order, req.body.id];
+  Order.addOrder(data);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Add Order Successful");
+};
+
+exports.addOrderDetails = (req, res) => {
+  for (var key in req.body) {
+    var array = [];
+    if (req.body.hasOwnProperty(key)) {
+      array.push(
+        req.body[key].id_order,
+        req.body[key].MSHH,
+        req.body[key].SoLuong
+      );
+      // console.log(req.body[key].id_order,req.body[key].MSHH,req.body[key].SoLuong);
+      Order.addOrderDetails(array);
+    }
+  }
+  res.status(200).json("Add Order-Details Successful");
 };
 
 //UPDATE

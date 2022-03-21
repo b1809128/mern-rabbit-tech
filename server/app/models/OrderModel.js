@@ -32,6 +32,21 @@ Order.getOrderDetailsById = (id, result) => {
   });
 };
 
+Order.addOrder = (data) => {
+  const sql =
+    "INSERT INTO order_product(id_order,id,id_staff,status) values (?,?,1,'Not Yet')";
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
+Order.addOrderDetails = (data) => {
+  const sql = "INSERT INTO details_order(id_order,MSHH,SoLuong) values (?,?,?)";
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
 Order.updateOrderNotAll = (id, data) => {
   const sql = `update order_product set ? where id_order='${id}'`;
   database.query(sql, data, (err, db) => {
