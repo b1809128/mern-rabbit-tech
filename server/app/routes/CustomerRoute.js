@@ -10,6 +10,7 @@ router.post("/add", customer.addCustomer);
 router.post("/address/add/", customer.addAddressCustomer);
 router.post("/order/add/:id", customer.addOrder);
 router.post("/order-details/add", customer.addOrderDetails);
+router.get("/order-details/test", customer.addTestOrderDetails);
 
 
 //UPDATE
