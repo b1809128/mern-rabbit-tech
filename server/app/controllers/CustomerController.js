@@ -42,10 +42,11 @@ exports.addAddressCustomer = (req, res) => {
 
 exports.addOrder = (req, res) => {
   const id_order = Math.floor(Math.random() * 10000)+Math.floor(Math.random() * 100)
-  const data = [id_order, req.body.id];
+  const data = [id_order, req.params.id];
   Order.addOrder(data);
+  // console.log(data);
   res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Add Order Successful");
+  res.status(200).json({id_order: id_order});
 };
 
 exports.addOrderDetails = (req, res) => {
@@ -58,6 +59,7 @@ exports.addOrderDetails = (req, res) => {
         req.body[key].SoLuong
       );
       // console.log(req.body[key].id_order,req.body[key].MSHH,req.body[key].SoLuong);
+      // console.log(array);
       Order.addOrderDetails(array);
     }
   }
