@@ -7,7 +7,7 @@ const Customer = (data) => {
   this.role = data.role;
 };
 
-Customer.getAll = (result) => {
+Customer.getAllCustomers__Model = (result) => {
   const sql = "SELECT * FROM customer";
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -15,7 +15,7 @@ Customer.getAll = (result) => {
   });
 };
 
-Customer.getAllHaveAddressById = (id, result) => {
+Customer.getAllHaveAddressById__Model = (id, result) => {
   const sql = `SELECT * FROM  customer INNER JOIN address ON customer.id = address.id WHERE customer.id = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -23,7 +23,7 @@ Customer.getAllHaveAddressById = (id, result) => {
   });
 };
 
-Customer.getAllOrderCustomerById = (id, result) => {
+Customer.getAllOrderCustomerById__Model = (id, result) => {
   const sql = `SELECT * FROM order_product where id = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -31,7 +31,7 @@ Customer.getAllOrderCustomerById = (id, result) => {
   });
 };
 
-Customer.getDetailsOrderById = (id, result) => {
+Customer.getDetailsOrderById__Model= (id, result) => {
   const sql = `SELECT * FROM details_order where id_order = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -39,7 +39,7 @@ Customer.getDetailsOrderById = (id, result) => {
   });
 };
 
-Customer.addCustomer = (data) => {
+Customer.addCustomer__Model = (data) => {
   const sql =
     "INSERT INTO customer(id,user,password,role) values (?,?,?,'customer')";
   database.query(sql, data, (err, db) => {
@@ -47,7 +47,7 @@ Customer.addCustomer = (data) => {
   });
 };
 
-Customer.addAddressCustomer = (data) => {
+Customer.addAddressCustomer__Model = (data) => {
   const sql =
     "INSERT INTO address(id, fullname,phonenumber,email,addressdetails) values (?,?,?,?,?)";
   database.query(sql, data, (err, db) => {
@@ -55,21 +55,21 @@ Customer.addAddressCustomer = (data) => {
   });
 };
 
-Customer.updatePutCustomerById = (id, data) => {
+Customer.updateCustomerById__Model = (id, data) => {
   const sql = `update customer set id=?,user=?,password=?,role=? where id='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
-Customer.updateCustomerNotAll = (id, data) => {
+Customer.updateCustomerNotAll__Model = (id, data) => {
   const sql = `update customer set ? where id='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
-Customer.deleteCustomerById = (id) => {
+Customer.deleteCustomerById__Model = (id) => {
   const sql = `delete from customer where id='${id}'`;
   database.query(sql, (err, db) => {
     if (err) throw err;

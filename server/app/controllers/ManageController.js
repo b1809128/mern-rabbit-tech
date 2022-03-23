@@ -1,7 +1,6 @@
 const Customer = require("../models/CustomerModel");
 const Product = require("../models/ProductModel");
 const Order = require("../models/OrderModel");
-const Auth = require("../models/AuthModel");
 const Images = require("../models/ImagesModel");
 const path = require("path");
 const multer = require("multer");
@@ -42,19 +41,13 @@ function checkFileType(file, cb) {
 }
 
 //TODO: READ
-exports.getAPI = (req, res) => {
-  Customer.getAll((result) => res.send(result));
+exports.getAPICustomers__Controller = (req, res) => {
+  Customer.getAllCustomers__Model((result) => res.send(result));
   res.setHeader("Content-Type", "application/json");
 };
 
-exports.getAllProduct = (req, res) => {
-  Product.getAll((result) => {
-    res.send(result);
-  });
-};
-
-exports.getAllCustomer = (req, res) => {
-  Auth.getAll((result) => {
+exports.getAllProducts__Controller = (req, res) => {
+  Product.getAllProducts__Model((result) => {
     res.send(result);
   });
 };
@@ -64,26 +57,27 @@ exports.getAllStaff = (req, res) => {
     res.send(result);
   });
 };
-exports.getAllOrder = (req, res) => {
-  Order.getAll((result) => {
+
+exports.getAllOrder__Controller = (req, res) => {
+  Order.getAllOrders__Model((result) => {
     res.send(result);
   });
 };
 
-exports.getOnlyOrderById = (req, res) => {
-  Order.getOnlyOrderById(req.params.id, (result) => {
+exports.getOnlyAllOrderById__Controller = (req, res) => {
+  Order.getOnlyAllOrderById__Model(req.params.id, (result) => {
     res.send(result);
   });
 };
 
-exports.getOrderDetailsById = (req, res) => {
-  Order.getOrderDetailsById(req.params.id, (result) => {
+exports.getOrderDetailsById__Controller = (req, res) => {
+  Order.getOrderDetailsById__Model(req.params.id, (result) => {
     res.send(result);
   });
 };
 
-exports.getTableCustomerSearch = (req, res) => {
-  Customer.getAll((result) => {
+exports.getTableCustomerSearch__Controller = (req, res) => {
+  Customer.getAllCustomers__Model((result) => {
     const { q } = req.query;
     const keys = ["id", "user", "role"];
     const search = (result) => {
@@ -96,17 +90,10 @@ exports.getTableCustomerSearch = (req, res) => {
   });
 };
 
-exports.getTableProductSearch = (req, res) => {
-  Product.getAll((result) => {
+exports.getTableProductSearch__Controller = (req, res) => {
+  Product.getAllProducts__Model((result) => {
     const { q } = req.query;
-    const keys = [
-      "MSHH",
-      "TenHH",
-      "SoLuongHang",
-      "Gia",
-      "MaLoaiHang",
-      "tags",
-    ];
+    const keys = ["MSHH", "TenHH", "SoLuongHang", "Gia", "MaLoaiHang", "tags"];
     const search = (result) => {
       return result.filter((data) =>
         keys.some((item) => data[item].toString().toLowerCase().includes(q))
@@ -117,8 +104,8 @@ exports.getTableProductSearch = (req, res) => {
   });
 };
 
-exports.getTableOrderSearch = (req, res) => {
-  Order.getAll((result) => {
+exports.getTableOrderSearch__Controller = (req, res) => {
+  Order.getAllOrders__Model((result) => {
     const { q } = req.query;
     const keys = ["id_order", "id", "id_staff", "created_at", "status"];
     const search = (result) => {
@@ -132,7 +119,7 @@ exports.getTableOrderSearch = (req, res) => {
 };
 
 //TODO:CREATE
-exports.addProduct = (req, res) => {
+exports.addProduct__Controller = (req, res) => {
   data = [
     req.body.MSHH,
     req.body.TenHH,
@@ -142,7 +129,7 @@ exports.addProduct = (req, res) => {
     req.body.MaLoaiHang,
     req.body.tags,
   ];
-  Product.addProduct(data);
+  Product.addProduct__Model(data);
   //SetHeader fix err_http
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Add Product Successful");
@@ -186,7 +173,7 @@ exports.uploadImageJson = (req, res) => {
 };
 
 //TODO: UPDATE
-exports.updateProductById = (req, res) => {
+exports.updateProductById__Controller = (req, res) => {
   data = [
     req.body.MSHH,
     req.body.TenHH,
@@ -196,86 +183,73 @@ exports.updateProductById = (req, res) => {
     req.body.MaLoaiHang,
     req.body.tags,
   ];
-  Product.updateProductById(req.params.id, data);
+  Product.updateProductById__Model(req.params.id, data);
   //SetHeader fix err_http
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Product Successful");
 };
 
-exports.updateProductImageById = (req, res) => {
+exports.updateProductImageById__Controller = (req, res) => {
   data = [req.body.MSHH, JSON.stringify(req.body.PATH)];
-  Product.updateProductById(req.params.id, data);
+  Product.updateProductById__Model(req.params.id, data);
   //SetHeader fix err_http
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Product Images Successful");
 };
 
-exports.updateUserById = (req, res) => {
-  data = [
-    req.body.MSKH,
-    req.body.HoTenKH,
-    req.body.TenCongTy,
-    req.body.SoDienThoai,
-    req.body.Email,
-    req.body.User,
-    req.body.Password,
-  ];
-  Customer.updateCustomerById(req.params.id, data);
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Update User Successful");
-};
+
 
 //FIXME: [add more column check already]
-exports.updateOrderById = (req, res) => {
+exports.updateOrderById__Controller = (req, res) => {
   data = [req.body.check];
   Order.updateOrderById(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update User Successful");
 };
 
-exports.updateProductNotAll = (req, res) => {
+exports.updateProductNotAll__Controller = (req, res) => {
   data = [req.body];
-  Product.updateProductNotAll(req.params.id, data);
+  Product.updateProductNotAll__Model(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Product Successful");
 };
 
-exports.updateCustomerNotAll = (req, res) => {
+exports.updateCustomerNotAll__Controller = (req, res) => {
   data = [req.body];
-  Customer.updateCustomerNotAll(req.params.id, data);
+  Customer.updateCustomerNotAll__Model(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Customer Successful");
 };
 
-exports.updateOrderNotAll = (req, res) => {
+exports.updateOrderNotAll__Controller = (req, res) => {
   data = [req.body];
-  Order.updateOrderNotAll(req.params.id, data);
+  Order.updateOrderNotAll__Model(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Order Successful");
 };
 
-exports.updateOrderDetailsNotAll = (req, res) => {
+exports.updateOrderDetailsNotAll__Controller = (req, res) => {
   data = [req.body];
-  Order.updateOrderDetailsNotAll(req.params.id, data);
+  Order.updateOrderDetailsNotAll__Model(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Order Successful");
 };
 
 //TODO: DELETE
-exports.deleteProductById = (req, res) => {
-  Product.deleteProductById(req.params.id);
+exports.deleteProductById__Controller = (req, res) => {
+  Product.deleteProductById__Model(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete Product Successful");
 };
 
-exports.deleteCustomerById = (req, res) => {
-  Customer.deleteCustomerById(req.params.id);
+exports.deleteCustomerById__Controller = (req, res) => {
+  Customer.deleteCustomerById__Model(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");
 };
 
-exports.deleteOrderById = (req, res) => {
-  Order.deleteOrderById(req.params.id);
+exports.deleteOrderById__Controller = (req, res) => {
+  Order.deleteOrderById__Model(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete Order Successful");
 };

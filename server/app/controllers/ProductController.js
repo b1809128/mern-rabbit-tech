@@ -1,74 +1,73 @@
 const Product = require("../models/ProductModel");
 
 //READ
-exports.getAllProducts = (req, res) => {
+exports.getAllProducts__Controller = (req, res) => {
   //Su dung query parameters de loc du lieu
   if (req.query.sortBy == "PRICE_ASC") {
-    Product.getSortByPriceASC((result) => res.send(result));
+    Product.getSortByPriceASC__Model((result) => res.send(result));
   } else if (req.query.sortBy == "PRICE_DESC") {
-    Product.getSortByPriceDESC((result) => res.send(result));
+    Product.getSortByPriceDESC__Model((result) => res.send(result));
   } else if (req.query.sortBy == "NAME_ASC") {
-    Product.getSortByNameASC((result) => res.send(result));
+    Product.getSortByNameASC__Model((result) => res.send(result));
   } else if (req.query.sortBy == "NAME_DESC") {
-    Product.getSortByNameDESC((result) => res.send(result));
+    Product.getSortByNameDESC__Model((result) => res.send(result));
   } else {
-    Product.getAll((result) => res.send(result));
+    Product.getAllProducts__Model((result) => res.send(result));
   }
 };
 
-exports.details = (req, res) => {
-  Product.getDetailsById(req.params.id, (result) => {
+exports.getProductDetailsById__Controller = (req, res) => {
+  Product.getProductDetailsById__Model(req.params.id, (result) => {
     res.send(result);
   });
 };
 
-exports.group = (req, res) => {
-  Product.getByGroup(req.params.id, (result) => {
+exports.getProductByGroup__Controller = (req, res,) => {
+  Product.getProductByGroup__Model(req.params.id, (result) => {
     res.send(result);
   });
 };
 
-exports.sortByPriceASC = (req, res) => {
-  Product.getSortByPriceASC((result) => {
+exports.sortByPriceASC__Controller = (req, res) => {
+  Product.getSortByPriceASC__Model((result) => {
     res.send(result);
   });
 };
 
-exports.sortByPriceDESC = (req, res) => {
-  Product.getSortByPriceDESC((result) => {
+exports.sortByPriceDESC__Controller = (req, res) => {
+  Product.getSortByPriceDESC__Model((result) => {
     res.send(result);
   });
 };
 
-exports.sortByNameASC = (req, res) => {
-  Product.getSortByNameASC((result) => {
+exports.sortByNameASC__Controller = (req, res) => {
+  Product.getSortByNameASC__Model((result) => {
     res.send(result);
   });
 };
 
-exports.sortByNameDESC = (req, res) => {
-  Product.getSortByNameDESC((result) => {
+exports.sortByNameDESC__Controller = (req, res) => {
+  Product.getSortByNameDESC__Model((result) => {
     res.send(result);
   });
 };
 
-exports.bestSale = (req, res) => {
-  Product.getBestSale((result) => {
+exports.getProductBestSale__Controller = (req, res) => {
+  Product.getProductBestSale__Model((result) => {
     res.send(result);
   });
 };
 
-exports.search = (req, res) => {
+exports.getProductSearch__Controller = (req, res) => {
   const tagName = req.query.tag;
-  Product.getSearch(tagName, (result) => {
+  Product.getProductSearch__Model(tagName, (result) => {
     res.send(result);
   });
 };
 
 //CREATE, UPDATE, DELETE in manage
 
-//Create
-
+//TEST
 exports.addToCart = (req, res) => {
   var slug = req.params.slug;
   Product.getDetailsById(slug, (result) => {

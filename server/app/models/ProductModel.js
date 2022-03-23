@@ -10,7 +10,7 @@ const Product = (data) => {
   this.tags = data.tags;
 };
 
-Product.getAll = (result) => {
+Product.getAllProducts__Model = (result) => {
   const sql = "SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH";
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -18,7 +18,7 @@ Product.getAll = (result) => {
   });
 };
 
-Product.getDetailsById = (id, result) => {
+Product.getProductDetailsById__Model = (id, result) => {
   const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH AND a.MSHH = '${id}'`;
   // const sql = `SELECT * FROM hanghoa where MSHH = '${id}'`;
   database.query(sql, (err, data) => {
@@ -27,7 +27,7 @@ Product.getDetailsById = (id, result) => {
   });
 };
 
-Product.getByGroup = (id, result) => {
+Product.getProductByGroup__Model = (id, result) => {
   const sql = `SELECT * FROM hanghoa as a, hinhanh as b where a.MSHH = b.MSHH and MaLoaiHang = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -35,7 +35,7 @@ Product.getByGroup = (id, result) => {
   });
 };
 
-Product.getSortByPriceASC = (result) => {
+Product.getSortByPriceASC__Model = (result) => {
   const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH order by b.Gia ASC`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -43,7 +43,7 @@ Product.getSortByPriceASC = (result) => {
   });
 };
 
-Product.getSortByPriceDESC = (result) => {
+Product.getSortByPriceDESC__Model = (result) => {
   const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH order by b.Gia DESC`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -51,7 +51,7 @@ Product.getSortByPriceDESC = (result) => {
   });
 };
 
-Product.getSortByNameASC = (result) => {
+Product.getSortByNameASC__Model = (result) => {
   const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH order by b.TenHH ASC`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -59,7 +59,7 @@ Product.getSortByNameASC = (result) => {
   });
 };
 
-Product.getSortByNameDESC = (result) => {
+Product.getSortByNameDESC__Model = (result) => {
   const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH order by b.TenHH DESC`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -67,7 +67,7 @@ Product.getSortByNameDESC = (result) => {
   });
 };
 
-Product.getBestSale = (result) => {
+Product.getProductBestSale__Model = (result) => {
   const sql = `SELECT * FROM hinhanh as a, hanghoa as b where a.MSHH = b.MSHH and b.SoLuongHang <= 10`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -75,7 +75,7 @@ Product.getBestSale = (result) => {
   });
 };
 
-Product.getSearch = (tagName, result) => {
+Product.getProductSearch__Model = (tagName, result) => {
   const sql = `SELECT * from hinhanh as a, hanghoa as b where a.MSHH=b.MSHH and concat(',',b.tags,',') LIKE concat(',%${tagName}%,')`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -83,7 +83,7 @@ Product.getSearch = (tagName, result) => {
   });
 };
 
-Product.addProduct = (data) => {
+Product.addProduct__Model = (data) => {
   const sql =
     "INSERT INTO hanghoa(MSHH,TenHH,Gia,SoLuongHang,Mota,MaLoaiHang,tags) values (?,?,?,?,?,?,?)";
   database.query(sql, data, (err, db) => {
@@ -91,21 +91,21 @@ Product.addProduct = (data) => {
   });
 };
 
-Product.updateProductById = (id, data) => {
+Product.updateProductById__Model = (id, data) => {
   const sql = `update hanghoa set MSHH = ?,TenHH = ?,Gia = ?,SoLuongHang = ?,Mota = ?,MaLoaiHang = ?,tags = ? where MSHH='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
-Product.updateProductNotAll = (id, data) => {
+Product.updateProductNotAll__Model = (id, data) => {
   const sql = `update hanghoa set ? where MSHH='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
-Product.deleteProductById = (id) => {
+Product.deleteProductById__Model = (id) => {
   const sql = `delete from hanghoa where MSHH = '${id}'`;
   database.query(sql, (err, db) => {
     if (err) throw err;

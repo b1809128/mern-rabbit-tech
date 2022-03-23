@@ -2,33 +2,33 @@ const Customer = require("../models/CustomerModel");
 const Order = require("../models/OrderModel");
 const Product = require("../models/ProductModel");
 //READ
-exports.getAllHaveAddressById = (req, res) => {
-  Customer.getAllHaveAddressById(req.params.id, (result) => {
+exports.getAllHaveAddressById__Controller = (req, res) => {
+  Customer.getAllHaveAddressById__Model(req.params.id, (result) => {
     res.send(result);
   });
 };
 
-exports.getAllOrderCustomerById = (req, res) => {
-  Customer.getAllOrderCustomerById(req.params.id, (result) => {
+exports.getAllOrderCustomerById__Controller = (req, res) => {
+  Customer.getAllOrderCustomerById__Model(req.params.id, (result) => {
     res.send(result);
   });
 };
 
-exports.getDetailsOrderById = (req, res) => {
-  Customer.getDetailsOrderById(req.params.id, (result) => {
+exports.getDetailsOrderById__Controller = (req, res) => {
+  Customer.getDetailsOrderById__Model(req.params.id, (result) => {
     res.send(result);
   });
 };
 
 //CREATE
-exports.addCustomer = (req, res) => {
+exports.addCustomer__Controller = (req, res) => {
   data = [req.body.id, req.body.user, req.body.password, req.body.role];
-  Customer.addCustomer(data);
+  Customer.addCustomer__Model(data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Add User Successful");
 };
 
-exports.addAddressCustomer = (req, res) => {
+exports.addAddressCustomer__Controller = (req, res) => {
   data = [
     req.body.id,
     req.body.fullname,
@@ -36,22 +36,22 @@ exports.addAddressCustomer = (req, res) => {
     req.body.email,
     req.body.addressdetails,
   ];
-  Customer.addAddressCustomer(data);
+  Customer.addAddressCustomer__Model(data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Add Address Successful");
 };
 
-exports.addOrder = (req, res) => {
+exports.addOrder__Controller = (req, res) => {
   const id_order =
     Math.floor(Math.random() * 10000) + Math.floor(Math.random() * 100);
   const data = [id_order, req.params.id];
-  Order.addOrder(data);
+  Order.addOrder__Model(data);
   // console.log(data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json({ id_order: id_order });
 };
 
-exports.addOrderDetails = (req, res) => {
+exports.addOrderDetails__Controller = (req, res) => {
   for (var key in req.body) {
     var array = [];
     if (req.body.hasOwnProperty(key)) {
@@ -62,14 +62,14 @@ exports.addOrderDetails = (req, res) => {
       );
       // console.log(req.body[key].id_order,req.body[key].MSHH,req.body[key].SoLuong);
       // console.log(array);
-      Order.addOrderDetails(array);
+      Order.addOrderDetails__Model(array);
       updateQuantityProductCallBack(array);
     }
   }
   res.status(200).json("Add Order-Details Successful");
 };
 
-exports.addTestOrderDetails = (req, res) => {
+exports.addTestOrderDetails__Controller = (req, res) => {
   for (var key in req.body) {
     var array = [];
     if (req.body.hasOwnProperty(key)) {
@@ -78,7 +78,7 @@ exports.addTestOrderDetails = (req, res) => {
         req.body[key].MSHH,
         req.body[key].SoLuong
       );
-      Product.getAll((result) => {
+      Product.getAllProducts__Model((result) => {
         let test = result.filter((data) => data.MSHH === array[1]);
         console.log({ SoLuongHang: test[0].SoLuongHang - array[2] });
         // console.log({length:test.length});
@@ -96,25 +96,25 @@ exports.addTestOrderDetails = (req, res) => {
 };
 
 const updateQuantityProductCallBack = (array) => {
-  Product.getAll((result) => {
+  Product.getAllProducts__Model((result) => {
     const test = result.filter((data) => data.MSHH === array[1]);
-    Product.updateProductNotAll(test[0].MSHH, {
+    Product.updateProductNotAll__Model(test[0].MSHH, {
       SoLuongHang: test[0].SoLuongHang - array[2],
     });
   });
 };
 
 //UPDATE
-exports.updatePutCustomerById = (req, res) => {
+exports.updateCustomerById__Controller = (req, res) => {
   data = [req.body.id, req.body.user, req.body.password, req.body.role];
-  Customer.updatePutCustomerById(req.params.id, data);
+  Customer.updateCustomerById__Model(req.params.id, data);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update User Successful");
 };
 
 //DELETE
-exports.deleteCustomerById = (req, res) => {
-  Customer.deleteCustomerById(req.params.id);
+exports.deleteCustomerById__Controller = (req, res) => {
+  Customer.deleteCustomerById__Model(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete User Successful");
 };
