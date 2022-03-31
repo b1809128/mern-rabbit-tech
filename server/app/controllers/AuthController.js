@@ -27,7 +27,16 @@ exports.setLoginAuth = (req, res) => {
           // res.send({ loggedIn: true, result: result });
           // console.log("id",result);
           const token = jwt.sign({ userID }, "jwtSecret");
-          res.json({ loggedIn: true, result: result, token: token });
+          res.json({
+            loggedIn: true,
+            result: result.map((data) => {
+              return {
+                id: data.id,
+                user: data.user,
+              };
+            }),
+            token: token,
+          });
         } else {
           res.send({ wrongPassword: "Wrong password.Please, try again !" });
         }
@@ -67,7 +76,13 @@ exports.testLoginAuth = (req, res) => {
           const token = jwt.sign({ id }, "jwtSecret", {
             expiresIn: 300,
           });
-          res.json({ loggedIn: true, result: result, token: token });
+          const test = [...result];
+          res.json({
+            loggedIn: true,
+            result: result,
+            token: token,
+            test: test,
+          });
         } else {
           res.send({ wrongPassword: "Wrong password.Please, try again !" });
         }
@@ -77,7 +92,6 @@ exports.testLoginAuth = (req, res) => {
     }
   });
 };
-
 
 // Authorization
 exports.profileAuth = (req, res) => {
