@@ -52,6 +52,12 @@ exports.getAllProducts__Controller = (req, res) => {
   });
 };
 
+exports.getAllBrandProducts__Controller = (req, res) => {
+  Product.getAllBrandProducts__Model((result) => {
+    res.send(result);
+  });
+};
+
 exports.getAllStaff = (req, res) => {
   Staff.getAll((result) => {
     res.send(result);

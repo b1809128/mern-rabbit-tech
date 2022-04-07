@@ -11,10 +11,12 @@ router.get("/order/details/:id", manage.getOrderDetailsById__Controller);
 router.get("/table/customer/search", manage.getTableCustomerSearch__Controller);
 router.get("/table/product/search", manage.getTableProductSearch__Controller);
 router.get("/table/order/search", manage.getTableOrderSearch__Controller);
+router.get("/product/brand", manage.getAllBrandProducts__Controller);
 
 //CREATE
 router.post("/product/add", manage.addProduct__Controller);
 router.post("/image/upload", manage.uploadImageJson);
+
 //UPDATE
 router.put("/product/update/:id", manage.updateProductById__Controller);
 router.put("/product/image/update/:id", manage.updateProductImageById__Controller);

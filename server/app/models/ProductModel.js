@@ -27,6 +27,14 @@ Product.getProductDetailsById__Model = (id, result) => {
   });
 };
 
+Product.getAllBrandProducts__Model = (result) => {
+  const sql = "SELECT * FROM loaihanghoa";
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
 Product.getProductByGroup__Model = (id, result) => {
   const sql = `SELECT * FROM hanghoa as a, hinhanh as b where a.MSHH = b.MSHH and MaLoaiHang = '${id}'`;
   database.query(sql, (err, data) => {

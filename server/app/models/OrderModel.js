@@ -9,7 +9,7 @@ const Order = (data) => {
 };
 
 Order.getAllOrders__Model = (result) => {
-  const sql = "SELECT * FROM order_product";
+  const sql = "SELECT * FROM dathang";
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
@@ -17,7 +17,7 @@ Order.getAllOrders__Model = (result) => {
 };
 
 Order.getOnlyAllOrderById__Model = (id, result) => {
-  const sql = `SELECT * FROM order_product where id_order=${id}`;
+  const sql = `SELECT * FROM dathang where id_order=${id}`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
@@ -25,7 +25,7 @@ Order.getOnlyAllOrderById__Model = (id, result) => {
 };
 
 Order.getOrderDetailsById__Model = (id, result) => {
-  const sql = `SELECT * FROM details_order as a, hinhanh as b, hanghoa as c where a.id_order=${id} and a.MSHH = c.MSHH and b.MSHH = c.MSHH`;
+  const sql = `SELECT * FROM chitietdathang as a, hinhanh as b, hanghoa as c where a.id_order=${id} and a.MSHH = c.MSHH and b.MSHH = c.MSHH`;
   database.query(sql, (err, data) => {
     if (err) throw err;
     result(data);
@@ -34,35 +34,35 @@ Order.getOrderDetailsById__Model = (id, result) => {
 
 Order.addOrder__Model = (data) => {
   const sql =
-    "INSERT INTO order_product(id_order,id,id_staff,status) values (?,?,1,'Not Yet')";
+    "INSERT INTO dathang(id_order,id,id_staff,status) values (?,?,1,'Not Yet')";
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
 Order.addOrderDetails__Model = (data) => {
-  const sql = "INSERT INTO details_order(id_order,MSHH,SoLuong) values (?,?,?)";
+  const sql = "INSERT INTO chitietdathang(id_order,MSHH,SoLuong) values (?,?,?)";
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
 Order.updateOrderNotAll__Model = (id, data) => {
-  const sql = `update order_product set ? where id_order='${id}'`;
+  const sql = `update dathang set ? where id_order='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
 Order.updateOrderDetailsNotAll__Model = (id, data) => {
-  const sql = `update details_order set ? where id_order='${id}'`;
+  const sql = `update chitietdathang set ? where id_order='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
 Order.deleteOrderById__Model = (id) => {
-  const sql = `delete from order_product where id_order = '${id}'`;
+  const sql = `delete from dathang where id_order = '${id}'`;
   database.query(sql, (err, db) => {
     if (err) throw err;
   });
