@@ -34,7 +34,7 @@ Order.getOrderDetailsById__Model = (id, result) => {
 
 Order.addOrder__Model = (data) => {
   const sql =
-    "INSERT INTO dathang(id_order,id,id_staff,status) values (?,?,1,'Not Yet')";
+    "INSERT INTO dathang(id_order,id,id_staff,status) values (?,?,1,'Chờ xác nhận')";
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
