@@ -7,7 +7,7 @@ const Auth = (data) => {
 };
 
 Auth.createUser = (data) => {
-  const sql = "INSERT INTO khachhang(user,password,role) VALUES (?,?,'khachhang')";
+  const sql = "INSERT INTO khachhang(user,password,role) VALUES (?,?,'customer')";
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
