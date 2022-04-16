@@ -112,6 +112,18 @@ exports.updateCustomerById__Controller = (req, res) => {
   res.status(200).json("Update User Successful");
 };
 
+exports.updateAddressById__Controller = (req, res) => {
+  data = [
+    req.body.fullname,
+    req.body.phonenumber,
+    req.body.email,
+    req.body.addressdetails,
+  ];
+  Customer.updateAddressAll__Model(req.params.id, data);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Add Address Successful");
+};
+
 //DELETE
 exports.deleteCustomerById__Controller = (req, res) => {
   Customer.deleteCustomerById__Model(req.params.id);

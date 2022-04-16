@@ -31,7 +31,7 @@ Customer.getAllOrderCustomerById__Model = (id, result) => {
   });
 };
 
-Customer.getDetailsOrderById__Model= (id, result) => {
+Customer.getDetailsOrderById__Model = (id, result) => {
   const sql = `SELECT * FROM chitietdathang where id_order = '${id}'`;
   database.query(sql, (err, data) => {
     if (err) throw err;
@@ -64,6 +64,13 @@ Customer.updateCustomerById__Model = (id, data) => {
 
 Customer.updateCustomerNotAll__Model = (id, data) => {
   const sql = `update khachhang set ? where id='${id}'`;
+  database.query(sql, data, (err, db) => {
+    if (err) throw err;
+  });
+};
+
+Customer.updateAddressAll__Model = (id, data) => {
+  const sql = `update diachi set fullname=?,phonenumber=?,email=?,addressdetails=? where id='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
