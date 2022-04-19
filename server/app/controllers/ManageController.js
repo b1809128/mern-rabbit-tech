@@ -2,43 +2,6 @@ const Customer = require("../models/CustomerModel");
 const Product = require("../models/ProductModel");
 const Order = require("../models/OrderModel");
 const Images = require("../models/ImagesModel");
-const path = require("path");
-const multer = require("multer");
-//FIXME: Set The Storage Engine
-const storage = multer.diskStorage({
-  destination: "./images",
-  filename: function (req, file, cb) {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  },
-});
-
-//TODO: Init Upload
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 10 * 1024 * 1024 },
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb);
-  },
-}).single("myImage");
-
-// Check File Type
-function checkFileType(file, cb) {
-  // Allowed ext
-  const filetypes = /jpeg|jpg|png|gif/;
-  // Check ext
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  // Check mime
-  const mimetype = filetypes.test(file.mimetype);
-
-  if (mimetype && extname) {
-    return cb(null, true);
-  } else {
-    cb("Error: Images Only!");
-  }
-}
 
 //TODO: READ
 exports.getAPICustomers__Controller = (req, res) => {
