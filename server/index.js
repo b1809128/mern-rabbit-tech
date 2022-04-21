@@ -42,24 +42,57 @@ app.use("/customer", customerRouter);
 app.use("/manage", manageRouter);
 app.use("/auth", authRouter);
 
-const path = require("path");
+const fs = require("fs");
 const multer = require("multer");
 
 //FIXME: Set The Storage Engine
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './images')
+    let targetDir = "./images/products/" + req.query.folderData;
+    if (!fs.existsSync(targetDir))
+      fs.mkdirSync(targetDir, (err) => {
+        if (err)
+          res
+            .status(500)
+            .json({ status: "failed", message: "can not create user folder" });
+        else cb(null, targetDir);
+      });
+    else cb(null, targetDir);
+    // cb(null, './images')
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname)
+    // console.log(file);
+    let now = new Date();
+    let originalName = file.originalname.substring(
+      0,
+      file.originalname.lastIndexOf(".")
+    );
+    let ext = file.originalname.substring(
+      file.originalname.lastIndexOf(".") + 1,
+      file.originalname.length
+    );
+    console.log(originalName, ext, file.originalname);
+    const uniqueSuffix =
+      originalName +
+      "_" +
+      now.getMonth() +
+      now.getDate() +
+      now.getFullYear() +
+      "_" +
+      now.getHours() +
+      now.getMinutes() +
+      now.getSeconds();
+    cb(null, uniqueSuffix + "." + ext);
   },
-})
+});
 
-const upload = multer({ storage: storage })
+const upload = multer({ storage: storage });
 
-app.post('/upload', upload.single('file'), function (req, res) {
-  res.json({})
-})
+app.post("/upload", upload.array("file", 10), function (req, res) {
+  // upload.array("file", 4)
+  // console.log(req.query.folderData);
+  res.json("File Uploaded");
+});
 
 app.listen(PORT, () =>
   console.log(`Server is running on http://localhost:${PORT}`)
