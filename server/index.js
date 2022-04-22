@@ -48,7 +48,7 @@ const multer = require("multer");
 //FIXME: Set The Storage Engine
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    let targetDir = "./images/products/" + req.query.folderData;
+    let targetDir = "./images/" + req.query.folderData;
     if (!fs.existsSync(targetDir))
       fs.mkdirSync(targetDir, (err) => {
         if (err)
@@ -92,7 +92,7 @@ const upload = multer({ storage: storage });
 const path = require("path");
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
-app.post("/upload", upload.array("file", 10), function (req, res) {
+app.post("/upload", upload.array("file"), function (req, res) {
   res.json("File Uploaded");
 });
 
