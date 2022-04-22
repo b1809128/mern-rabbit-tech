@@ -159,14 +159,12 @@ exports.updateProductById__Controller = (req, res) => {
 };
 
 exports.updateProductImageById__Controller = (req, res) => {
-  data = [req.body.MSHH, JSON.stringify(req.body.PATH)];
-  Product.updateProductById__Model(req.params.id, data);
+  data = [JSON.stringify(req.body.PATH)];
+  Images.updateProductImageById__Model(req.params.id, data);
   //SetHeader fix err_http
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Update Product Images Successful");
 };
-
-
 
 //FIXME: [add more column check already]
 exports.updateOrderById__Controller = (req, res) => {

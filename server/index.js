@@ -71,7 +71,7 @@ const storage = multer.diskStorage({
       file.originalname.lastIndexOf(".") + 1,
       file.originalname.length
     );
-    console.log(originalName, ext, file.originalname);
+    // console.log(originalName, ext, file.originalname);
     const uniqueSuffix =
       originalName +
       "_" +
@@ -88,9 +88,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+//TODO: Su dung cai nay de load anh theo thu muc public
+const path = require("path");
+app.use("/images", express.static(path.join(__dirname, "/images")));
+
 app.post("/upload", upload.array("file", 10), function (req, res) {
-  // upload.array("file", 4)
-  // console.log(req.query.folderData);
   res.json("File Uploaded");
 });
 
