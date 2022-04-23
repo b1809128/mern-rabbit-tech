@@ -33,6 +33,12 @@ exports.getAllOrder__Controller = (req, res) => {
   });
 };
 
+exports.getAllDetailOrders__Controller = (req, res) => {
+  Order.getAllDetailOrders__Model((result) => {
+    res.send(result);
+  });
+};
+
 exports.getOnlyAllOrderById__Controller = (req, res) => {
   Order.getOnlyAllOrderById__Model(req.params.id, (result) => {
     res.send(result);

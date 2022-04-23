@@ -6,6 +6,7 @@ router.get("/api", manage.getAPICustomers__Controller);
 router.get("/product", manage.getAllProducts__Controller);
 router.get("/customer", manage.getAPICustomers__Controller);
 router.get("/order", manage.getAllOrder__Controller);
+router.get("/order/details", manage.getAllDetailOrders__Controller);
 router.get("/order/:id", manage.getOnlyAllOrderById__Controller);
 router.get("/order/details/:id", manage.getOrderDetailsById__Controller);
 router.get("/table/customer/search", manage.getTableCustomerSearch__Controller);

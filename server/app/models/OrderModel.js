@@ -16,6 +16,14 @@ Order.getAllOrders__Model = (result) => {
   });
 };
 
+Order.getAllDetailOrders__Model = (result) => {
+  const sql = "SELECT * FROM chitietdathang";
+  database.query(sql, (err, data) => {
+    if (err) throw err;
+    result(data);
+  });
+};
+
 Order.getOnlyAllOrderById__Model = (id, result) => {
   const sql = `SELECT * FROM dathang where id_order=${id}`;
   database.query(sql, (err, data) => {
@@ -41,7 +49,8 @@ Order.addOrder__Model = (data) => {
 };
 
 Order.addOrderDetails__Model = (data) => {
-  const sql = "INSERT INTO chitietdathang(id_order,MSHH,SoLuong) values (?,?,?)";
+  const sql =
+    "INSERT INTO chitietdathang(id_order,MSHH,SoLuong) values (?,?,?)";
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
