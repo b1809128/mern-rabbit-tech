@@ -3,6 +3,7 @@ const database = require("../database/connect");
 const Product = (data) => {
   this.MSHH = data.MSHH;
   this.TenHH = data.TenHH;
+  this.GiaNhapHang = data.GiaNhapHang;
   this.Gia = data.Gia;
   this.SoLuongHang = data.SoLuongHang;
   this.Mota = data.Mota;
@@ -93,14 +94,14 @@ Product.getProductSearch__Model = (tagName, result) => {
 
 Product.addProduct__Model = (data) => {
   const sql =
-    "INSERT INTO hanghoa(MSHH,TenHH,Gia,SoLuongHang,Mota,MaLoaiHang,tags) values (?,?,?,?,?,?,?)";
+    "INSERT INTO hanghoa(MSHH,TenHH,GiaNhapHang,Gia,SoLuongHang,Mota,MaLoaiHang,tags) values (?,?,?,?,?,?,?,?)";
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });
 };
 
 Product.updateProductById__Model = (id, data) => {
-  const sql = `update hanghoa set MSHH = ?,TenHH = ?,Gia = ?,SoLuongHang = ?,Mota = ?,MaLoaiHang = ?,tags = ? where MSHH='${id}'`;
+  const sql = `update hanghoa set MSHH = ?,TenHH = ?,GiaNhapHang = ?,Gia = ?,SoLuongHang = ?,Mota = ?,MaLoaiHang = ?,tags = ? where MSHH='${id}'`;
   database.query(sql, data, (err, db) => {
     if (err) throw err;
   });

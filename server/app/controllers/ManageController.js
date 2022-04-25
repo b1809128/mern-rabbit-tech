@@ -98,6 +98,7 @@ exports.addProduct__Controller = (req, res) => {
   data = [
     req.body.MSHH,
     req.body.TenHH,
+    req.body.GiaNhapHang,
     req.body.Gia,
     req.body.SoLuongHang,
     JSON.stringify(req.body.Mota),
@@ -152,6 +153,7 @@ exports.updateProductById__Controller = (req, res) => {
   data = [
     req.body.MSHH,
     req.body.TenHH,
+    req.body.GiaNhapHang,
     req.body.Gia,
     req.body.SoLuongHang,
     JSON.stringify(req.body.Mota),
