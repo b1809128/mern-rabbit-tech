@@ -1,5 +1,5 @@
 const Product = require("../models/ProductModel");
-
+const Category = require("../models/CategoriesModel")
 //READ
 exports.getAllProducts__Controller = (req, res) => {
   //Su dung query parameters de loc du lieu
@@ -22,7 +22,7 @@ exports.getProductDetailsById__Controller = (req, res) => {
   });
 };
 
-exports.getProductByGroup__Controller = (req, res,) => {
+exports.getProductByGroup__Controller = (req, res) => {
   Product.getProductByGroup__Model(req.params.id, (result) => {
     res.send(result);
   });
@@ -61,6 +61,12 @@ exports.getProductBestSale__Controller = (req, res) => {
 exports.getProductSearch__Controller = (req, res) => {
   const tagName = req.query.tag;
   Product.getProductSearch__Model(tagName, (result) => {
+    res.send(result);
+  });
+};
+
+exports.getAllCategories__Controller = (req, res) => {
+  Category.getAllCategories__Model((result) => {
     res.send(result);
   });
 };
@@ -110,4 +116,3 @@ exports.productSetCookie = (req, res) => {
 exports.getCheckOut = (req, res) => {
   res.send(req.session.cart);
 };
-

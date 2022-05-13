@@ -7,6 +7,7 @@ router.get("/details/:id", product.getProductDetailsById__Controller);
 router.get("/group/:id", product.getProductByGroup__Controller);
 router.get("/bestsale", product.getProductBestSale__Controller);
 router.get("/search", product.getProductSearch__Controller);
+router.get("/categories", product.getAllCategories__Controller);
 
 //TEST
 router.post("/cart/:slug", product.addToCart);

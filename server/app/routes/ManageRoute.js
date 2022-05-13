@@ -17,6 +17,7 @@ router.get("/product/brand", manage.getAllBrandProducts__Controller);
 //CREATE
 router.post("/product/add", manage.addProduct__Controller);
 router.post("/image/upload", manage.uploadImageJson);
+router.post("/categories/add", manage.addCategories__Controller);
 
 //UPDATE
 router.put("/product/update/:id", manage.updateProductById__Controller);
@@ -31,5 +32,6 @@ router.patch("/order/details/updateonly/:id", manage.updateOrderDetailsNotAll__C
 router.delete("/product/delete/:id", manage.deleteProductById__Controller);
 router.delete("/customer/delete/:id", manage.deleteCustomerById__Controller);
 router.delete("/order/delete/:id", manage.deleteOrderById__Controller);
+router.delete("/categories/delete/:id", manage.deleteCategories__Controller);
 
 module.exports = router;

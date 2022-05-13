@@ -2,6 +2,7 @@ const Customer = require("../models/CustomerModel");
 const Product = require("../models/ProductModel");
 const Order = require("../models/OrderModel");
 const Images = require("../models/ImagesModel");
+const Category = require("../models/CategoriesModel");
 
 //TODO: READ
 exports.getAPICustomers__Controller = (req, res) => {
@@ -111,19 +112,11 @@ exports.addProduct__Controller = (req, res) => {
   res.status(200).json("Add Product Successful");
 };
 
-exports.addStaff = (req, res) => {
-  data = [
-    req.body.MSNV,
-    req.body.HoTenNV,
-    req.body.ChucVu,
-    req.body.DiaChi,
-    req.body.SoDienThoai,
-    req.body.User,
-    req.body.Password,
-  ];
-  Staff.addStaff(data);
+exports.addCategories__Controller = (req, res) => {
+  data = [req.body.MaLoaiHang, req.body.TenLoaiHang];
+  Category.addCategories__Model(data);
   res.setHeader("Content-Type", "application/json");
-  res.status(200).json("Add User Successful");
+  res.status(200).json("Add Categories Successful");
 };
 
 exports.uploadImage = (req, res) => {
@@ -227,4 +220,10 @@ exports.deleteOrderById__Controller = (req, res) => {
   Order.deleteOrderById__Model(req.params.id);
   res.setHeader("Content-Type", "application/json");
   res.status(200).json("Delete Order Successful");
+};
+
+exports.deleteCategories__Controller = (req, res) => {
+  Category.deleteCategories__Model(req.params.id);
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Delete Category Successful");
 };
