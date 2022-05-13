@@ -136,6 +136,53 @@ exports.mailNewInfomation__Controller = (req, res) => {
   res.status(200).json("Send Mail Successful");
 };
 
+exports.mailClientInfomation__Controller = (req, res) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "huyb1809128@student.ctu.edu.vn",
+      pass: "A4#K8tBD",
+    },
+  });
+
+  //Bat OFF de su gui mail
+  //https://myaccount.google.com/lesssecureapps?gar=1&rapt=AEjHL4Ms34t8ay2ik7bMikD1S2aSjheiLbn5TJqFqnnohxkKH-K-ii5nvav1Kz37Y8i0NWRYVOnati4uBFbe67AGgQlwuvQkXA
+
+  const mailOptions = {
+    from: "huyb1809128@student.ctu.edu.vn",
+    to: "huyb1809128@student.ctu.edu.vn",
+    subject: `Sending Email from ${req.body.mail}`,
+    html: `<table style="width:100%">
+    <tr>
+      <th>Họ tên</th>
+      <th>Email</th>
+      <th>Số điện thoại</th>
+      <th>Công ty</th>
+      <th>Ghi chú</th>
+    </tr>
+    <tr>
+      <td>${req.body.name}</td>
+      <td>${req.body.mail}</td>
+      <td>${req.body.phone}</td>
+      <td>${req.body.company}</td>
+      <td>${req.body.note}</td>
+    </tr>
+    
+  </table>  
+  `,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log("Error: " + error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Send Mail Successful");
+};
+
 //UPDATE
 exports.updateCustomerById__Controller = (req, res) => {
   data = [req.body.id, req.body.user, req.body.password, req.body.role];
