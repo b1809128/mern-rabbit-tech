@@ -10,6 +10,7 @@ router.post("/add", customer.addCustomer__Controller);
 router.post("/address/add/", customer.addAddressCustomer__Controller);
 router.post("/order/add/:id", customer.addOrder__Controller);
 router.post("/order-details/add", customer.addOrderDetails__Controller);
+router.post("/send-mail", customer.mailNewInfomation__Controller);
 
 //TEST
 router.get("/order-details/test", customer.addTestOrderDetails__Controller);

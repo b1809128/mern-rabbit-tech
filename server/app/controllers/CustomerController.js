@@ -1,6 +1,7 @@
 const Customer = require("../models/CustomerModel");
 const Order = require("../models/OrderModel");
 const Product = require("../models/ProductModel");
+const nodemailer = require("nodemailer");
 //READ
 exports.getAllHaveAddressById__Controller = (req, res) => {
   Customer.getAllHaveAddressById__Model(req.params.id, (result) => {
@@ -102,6 +103,37 @@ const updateQuantityProductCallBack = (array) => {
       SoLuongHang: test[0].SoLuongHang - array[2],
     });
   });
+};
+
+//TODO: NodeMailer
+exports.mailNewInfomation__Controller = (req, res) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "huyb1809128@student.ctu.edu.vn",
+      pass: "A4#K8tBD",
+    },
+  });
+
+  //Bat OFF de su gui mail
+  //https://myaccount.google.com/lesssecureapps?gar=1&rapt=AEjHL4Ms34t8ay2ik7bMikD1S2aSjheiLbn5TJqFqnnohxkKH-K-ii5nvav1Kz37Y8i0NWRYVOnati4uBFbe67AGgQlwuvQkXA
+
+  const mailOptions = {
+    from: "huyb1809128@student.ctu.edu.vn",
+    to: req.body.mailtext,
+    subject: "Sending Email using Node JS",
+    text: "QuocHuy, we're from Node JS to send you email by Quoc Huy Developer",
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log("Error: " + error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json("Send Mail Successful");
 };
 
 //UPDATE
