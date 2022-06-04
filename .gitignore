@@ -2,3 +2,4 @@
 /server/node_modules
 /server/images
 /json/node_modules
+/server/app/middlewares/passport.js
