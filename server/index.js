@@ -7,23 +7,36 @@ const manageRouter = require("./app/routes/ManageRoute");
 const authRouter = require("./app/routes/AuthRoute");
 const cors = require("cors");
 const app = express();
+const passport = require("passport");
+require("./app/middlewares/passport");
+
+//Upload
+const fs = require("fs");
+const multer = require("multer");
+const path = require("path");
 
 //Express-Session
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const cookieSession = require("cookie-session");
 
 app.use(cookieParser());
 app.use(
   session({
     secret: "secret-token",
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     // cookie: { secure: true },
-    cookie: { maxAge: 60000 },
   })
 );
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(
   bodyParser.urlencoded({
@@ -41,9 +54,6 @@ app.use("/product", productRouter);
 app.use("/customer", customerRouter);
 app.use("/manage", manageRouter);
 app.use("/auth", authRouter);
-
-const fs = require("fs");
-const multer = require("multer");
 
 //FIXME: Set The Storage Engine
 const storage = multer.diskStorage({
@@ -109,12 +119,19 @@ const upload = multer({
 });
 
 //TODO: Su dung cai nay de load anh theo thu muc public
-const path = require("path");
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 app.post("/upload", upload.array("file"), function (req, res) {
   res.json("File Uploaded");
 });
+
+//TODO: Using Cookie Session to Login Google Account
+// app.use(
+//   cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
+// );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.listen(PORT, () =>
   console.log(`Server is running on http://localhost:${PORT}`)
