@@ -16,19 +16,28 @@ const multer = require("multer");
 const path = require("path");
 
 //Express-Session
+// const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
-const cookieSession = require("cookie-session");
-
 app.use(cookieParser());
+const session = require("express-session");
 app.use(
   session({
-    secret: "secret-token",
-    resave: false,
-    saveUninitialized: true,
-    // cookie: { secure: true },
+    secret: "google-auth-session",
+    resave: true,
+    saveUninitialized: false,
+    // cookie: { maxAge: 1000 * 60 * 60 * 24 },
   })
 );
+
+//TODO: Using Cookie Session to Login Google Account
+// app.use(
+//   cookieSession({
+//     name: "google-auth-session",
+//     keys: ["key1", "key2"],
+//   })
+// );
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(
   cors({
@@ -37,14 +46,10 @@ app.use(
     credentials: true,
   })
 );
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(
-  bodyParser.urlencoded({
-    limit: "50mb",
-    extended: true,
-    parameterLimit: 50000,
-  })
-);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 const PORT = 5000;
 
@@ -125,13 +130,6 @@ app.post("/upload", upload.array("file"), function (req, res) {
   res.json("File Uploaded");
 });
 
-//TODO: Using Cookie Session to Login Google Account
-// app.use(
-//   cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
-// );
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.listen(PORT, () =>
   console.log(`Server is running on http://localhost:${PORT}`)
