@@ -5,7 +5,7 @@ const passport = require("passport");
 const Auth = require("../models/AuthModel");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
-var profileUser;
+let profileUser;
 //GET
 router.get("/login", auth.loginAuth);
 router.get("/logout", auth.logoutAuth);
@@ -34,32 +34,28 @@ router.post("/testJWT", auth.testLoginAuth);
 //TODO: Google Login
 const CLIENT_URL = "http://localhost:3000/";
 
-router.get("/login/failed", (req, res) => {
-  res.status(401).json({
-    success: false,
-    message: "failure",
-  });
-});
-
-router.get("/google/logout", (req, res) => {
-  req.logout();
-  res.send(true);
-});
-
 router.get(
   "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    prompt: "select_account",
+  })
 );
 
 router.get("/google/callback", (req, res) => {
   passport.authenticate(
     "google",
-    { successRedirect: CLIENT_URL, failureRedirect: "/login/failed" },
+    {
+      // successRedirect: CLIENT_URL,
+      failureRedirect: "/login/failed",
+      keepSessionInfo: false,
+    },
     (err, user) => {
       // console.log(user);
       // You can send cookies and data in response here.
-      req.cookies.user = user;
-      profileUser = req.cookies.user;
+      // req.cookies.user = user;
+      // profileUser = req.cookies.user;
+      profileUser = user;
       if (profileUser) {
         res.redirect(CLIENT_URL);
       }
@@ -68,15 +64,13 @@ router.get("/google/callback", (req, res) => {
 });
 
 router.get("/google/login/success", (req, res) => {
-  // console.log({ profileUser: profileUser ? profileUser : "empty" });
-  // res.status(200).json({
-  //   profileUser: profileUser ? profileUser.name.familyName : "empty",
-  // });
   if (profileUser) {
     Auth.checkLoginAuth(profileUser.name.familyName, (result) => {
       if (result.length > 0) {
         const userID = result[0].user;
-        const token = jwt.sign({ userID }, "jwtSecret");
+        const token = jwt.sign({ userID }, "jwtSecret", {
+          expiresIn: "3600s",
+        });
         res.status(200).json({
           loggedIn: true,
           result: result.map((data) => {
@@ -103,9 +97,26 @@ router.get("/google/login/success", (req, res) => {
   }
 });
 
+router.get("/login/failed", (req, res) => {
+  res.status(401).json({
+    success: false,
+    message: "failure",
+  });
+});
+
+router.get("/google/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.clearCookie("user");
+    res.redirect(CLIENT_URL);
+  });
+});
+
 router.get("/api/google", (req, res) => {
-  req.cookies.test = "Node JS";
-  res.send(req.cookies);
+  console.log(req.cookies);
+  res.send(profileUser);
 });
 
 //TODO: Facebook Login
@@ -124,10 +135,6 @@ router.get(
 );
 
 router.get("/facebook/login/success", (req, res) => {
-  // console.log({ profileUser: profileUser ? profileUser : "empty" });
-  // res.status(200).json({
-  //   profileUser: profileUser ? profileUser.name.familyName : "empty",
-  // });
   if (profileUser) {
     Auth.checkLoginAuth(profileUser.name.familyName, (result) => {
       if (result.length > 0) {

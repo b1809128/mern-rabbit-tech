@@ -23,8 +23,8 @@ const session = require("express-session");
 app.use(
   session({
     secret: "google-auth-session",
-    resave: true,
-    saveUninitialized: false,
+    resave: false,
+    saveUninitialized: true,
     // cookie: { maxAge: 1000 * 60 * 60 * 24 },
   })
 );

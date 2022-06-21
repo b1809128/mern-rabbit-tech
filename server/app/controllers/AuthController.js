@@ -11,6 +11,7 @@ exports.loginAuth = (req, res) => {
 };
 
 exports.logoutAuth = (req, res) => {
+  
   res.send(true);
 };
 
@@ -26,7 +27,9 @@ exports.setLoginAuth = (req, res) => {
           const userID = result[0].user;
           // res.send({ loggedIn: true, result: result });
           // console.log("id",result);
-          const token = jwt.sign({ userID }, "jwtSecret");
+          const token = jwt.sign({ userID }, "jwtSecret",{
+            expiresIn: 3600,
+          });
           res.json({
             loggedIn: true,
             result: result.map((data) => {
